@@ -46,6 +46,14 @@ library("ggplot2")
 library("readr")
 ```
 
+```{r read-in-data}
+mos_pathogen_data <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenpooling.csv")
+mos_pathogen_data <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenresults.csv")
+count_mosquitoes_data <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expertTaxonomistIDProcessed.csv")
+count_mosquitoes_data <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
+```
+
+
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.
 
 # Discussion

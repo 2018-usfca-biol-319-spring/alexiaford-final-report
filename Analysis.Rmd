@@ -1,6 +1,6 @@
 ---
-title: "Analysis Report 2: NEON Mosquito Trap Data"
-author: "Don Francisco"
+title: "Final Project: NEON Mosquito Pathogen Borne Status Data"
+author: "Alexia Ford"
 date: "4/3/2018"
 bibliography: references.bib
 csl: ecology.csl
@@ -70,6 +70,18 @@ ggplot(count_mos_all, aes(y = mean_elev,
   
 ```
 
+```{r boxplot-of-elevation-of-mosquito-pathogens-at-all-sites}
+# elevation of NEON mosquitos pathogen data at all NEON sites 
+ggplot(mos_pathogen_results, aes(x = siteID.testResult,
+                    y = elevation)) +
+  geom_boxplot() +
+  ggtitle("Elevation of Mosquitos Pathogen Status at all NEON sites") +
+  xlab("Site ID") +
+  ylab("Elevation (meters)")
+#r statistical test
+anova(lm(elevation ~ siteID.testResult,
+         data = mos_pathogen_results))
+```
 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.

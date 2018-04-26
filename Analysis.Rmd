@@ -47,11 +47,29 @@ library("readr")
 ```
 
 ```{r read-in-data}
-mos_pathogen_data <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenpooling.csv")
-mos_pathogen_data <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenresults.csv")
-count_mosquitoes_data <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expertTaxonomistIDProcessed.csv")
-count_mosquitoes_data <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
+mos_pathogen_results <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenresults.csv")
+count_mos_taxonomist_ID <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expertTaxonomistIDProcessed.csv")
+count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
+aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
 ```
+
+```{r combine-datasets}
+summarized_plots <- count_mos_trapping %>%
+  group_by(plotID) %>%
+  summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
+            mean_long = mean(decimalLongitude, na.rm = TRUE),
+            mean_elev = mean(elevation, na.rm = TRUE),
+            nlcdClass = first(nlcdClass))
+
+count_mos_all <- count_mos_taxonomist_ID %>%
+  left_join(summarized_plots)
+
+ggplot(count_mos_all, aes(y = mean_elev,
+                          x = siteID)) +
+  geom_boxplot()
+  
+```
+
 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.

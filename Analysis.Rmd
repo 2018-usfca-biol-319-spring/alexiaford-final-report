@@ -44,6 +44,7 @@ library("dplyr")
 library("tidyr")
 library("ggplot2")
 library("readr")
+library("knitr")
 ```
 
 ```{r read-in-data}
@@ -53,7 +54,9 @@ count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.
 aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
 ```
 
+Figure 1. Boxplot of the Elevation of all NEON sites
 ```{r combine-datasets}
+# boxplot of the elevation of all NEON sites
 summarized_plots <- count_mos_trapping %>%
   group_by(plotID) %>%
   summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
@@ -66,22 +69,94 @@ count_mos_all <- count_mos_taxonomist_ID %>%
 
 ggplot(count_mos_all, aes(y = mean_elev,
                           x = siteID)) +
-  geom_boxplot()
+  geom_boxplot() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Elevation (m)") +
+  ggtitle("Elevation in meters of all NEON Sites")
+
+#r anova statistical test
   
 ```
 
-```{r boxplot-of-elevation-of-mosquito-pathogens-at-all-sites}
-# elevation of NEON mosquitos pathogen data at all NEON sites 
-ggplot(mos_pathogen_results, aes(x = siteID.testResult,
-                    y = elevation)) +
-  geom_boxplot() +
-  ggtitle("Elevation of Mosquitos Pathogen Status at all NEON sites") +
+Figure 2. Barplot of the Count of Test Results of Mosquitos at all NEON sites
+```{r barplot-of-count-of-test-results-at-all-sites}
+# count test results of mosquitos at all NEON sites 
+ggplot(mos_pathogen_results,
+       aes(x = siteID,
+           fill = testResult)) +
+  geom_bar() +
+  ggtitle("Count of Test Results of Mosquitos at all NEON sites") +
   xlab("Site ID") +
-  ylab("Elevation (meters)")
-#r statistical test
-anova(lm(elevation ~ siteID.testResult,
-         data = mos_pathogen_results))
+  ylab("Count of Test Results") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+#r chi square test
 ```
+
+Figure 3. Mean Elevation for Six of the NEON sites
+```{r elevation-table}
+mos_pathogen_results %>%
+  group_by(siteID) %>%
+  summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
+  arrange(desc(mean_elev)) %>%
+  kable(col.names = c("Site ID", "Mean elevation (m)"))
+
+```
+
+Figure 4. 
+```{r}
+
+```
+
+
+Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
+```{r map-of-elevation-pathogen-results-all-sites}
+usa_map <- map_data("usa")
+
+points_with_lat_long <- mos_pathogen_results %>%
+  group_by(siteID) %>%
+  summarise(mean_lat = mean(decimalLatitude),
+            mean_long = mean(decimalLongitude))
+
+count_of_test_results <- mos_pathogen_results %>%
+  group_by(siteID, testResult) %>%
+  tally()
+
+neg_tests <- count_of_test_results %>%
+  filter(testResult == "Negative")
+
+pos_tests <- count_of_test_results %>%
+  filter(testResult == "Positive")
+
+ggplot() +
+  ggtitle("Elevation of Pathogen Results at all NEON Sites") +
+  geom_polygon(data = usa_map,
+               aes(x = long,
+                   y = lat,
+                   group = group),
+               fill = "light blue") +
+  coord_fixed(1.3) +
+  geom_point(data =  points_with_lat_long,
+             aes(x = mean_long,
+                 y = mean_lat,
+                 size = neg_tests$n)) + # number of negative
+  geom_point(data =  points_with_lat_long,
+             aes(x = mean_long,
+                 y = mean_lat,
+                 size = c(8, 0, 0, 4, 62, 0)), # number of positive tests
+             color = "blue")
+```
+
+Figure 6. Temperature
+```{r eval=FALSE}
+# example plot - in order to make lines connect appropriately
+# the group option is needed
+ggplot(temp_in, aes(x = hour,
+                    y = bioTempMean,
+                    group = interaction(siteID, year, month, day))) +
+  geom_line(alpha = 0.01) # alpha sets transparency
+```
+
 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.

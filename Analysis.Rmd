@@ -26,6 +26,15 @@ This report will specifically be analyzing how the distribution of elevation var
 Delete this placeholder text, and replace it with your introduction text. You should include background on the NEON project including proper citations (e.g. [@thorpe2016introduction]) and other relevent background information related to your specific hypotheses. Add about 2-3 pages here. Across the whole manuscript, you should cite at least 20 peer reviewed articles.
 
 # Methods
+The mosquito NEON data comes from a wide range of NEON sites with varying domains. The sampling design is continuous across all sites to ensure data is consistent and comparable across time and space. The sampling methods include sampling mosquitoes at NEON sites using CDC CO2 light traps. All traps use CO2 as bait because CO2 attracts mosquitoes as it is a component of vertebrate breath that mosquitoes use to locate hosts. Once the mosquito is attracted to the trap a fan pulls the mosquitoes into a net bag for live storage until the trap is collected by a field technician. The design of the CDC CO2 light trap has remained intact since 1962, maintaining it's efficiency and effectiveness in use as the design has allowed for the removal of additional "trash" insects not swaying or adding to collection of data in anyway [@mcnelly1989cdc].
+
+Once the trap is collected by a technician minimal processing occurs at the Domain lab. The mosquitoes are frozen, transferred and stored in dry sample vials at -80°C to be sent for identification and pathogen testing at a facility. Mosquitoes are identified at external facilities in order to minimize identification errors and accurately identify mosquitoes to species. Identification is based on visual examination of external morphology. After identification, target species are destructively tested for pathogens. 
+
+Using mosquito data collected and provided by NEON this report will use R and RStudio to visualize results and test how the distribution of elevation varies across NEON sites and differing species. To begin, the mosquito NEON data was read into RStudio. R and RStudio was used in conjunction with the ggplot2 and dplyr packages to analyze the data. ANOVA was used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub. 
+
+This report will specifically be analyzing how the distribution of elevation varies across all NEON sites and species using: 
+
+ADD TEMPERATURE AND MOSQUITO PATHOGEN STATUS
 
 Describe where the data came from, including the sets of sites you are comparing, how the data you are using were collected in the field, some information about those sites and why you chose them, and how you are analyzing them (e.g. using R to visualize the results and the statistical tests you will use).
 
@@ -106,7 +115,7 @@ ggplot(mos_pathogen_results,
 #r chi square test
 ```
 
-Figure 3. Mean Elevation for Six of the NEON sites
+Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
 mos_pathogen_results %>%
   group_by(siteID) %>%
@@ -118,15 +127,19 @@ mos_pathogen_results %>%
 Figure 4. Boxplot for STER site
 ```{r boxplot-for-STER-site}
 # make a boxplot for the elevation of mosquitos at "STER" NEON site
+mos_pathogen_results$scientificName <-
+  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
+                            split = "\\.", ), `[`, 4),
+       mode = "character")
+
 mos_pathogen_results %>%
-  filter(siteID.taxa == "STER") %>%
   filter(!is.na(scientificName)) %>%
-  ggplot(aes(x = scientificName,
-             y = elevation)) +
-  geom_boxplot() +
+  ggplot(aes(fill = scientificName,
+             x = elevation)) +
+  geom_bar(position = position_dodge()) +
   ggtitle("Elevation of Mosquitos Species at STER NEON site") +
-  xlab("Species") +
-  ylab("Elevation (meters)")
+  xlab("Elevation (m)") +
+  ylab("Count")
 
 #r statistical test
 #anova(lm(elevation ~ scientificName,
@@ -134,7 +147,12 @@ mos_pathogen_results %>%
 ```
 
 
-Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
+Figure 5. Boxplot for JERC site
+```{r}
+
+```
+
+Figure 6. Map of the Elevation of Pathogen Results at all NEON Sites
 ```{r map-of-elevation-pathogen-results-all-sites}
 usa_map <- map_data("usa")
 
@@ -172,32 +190,22 @@ ggplot() +
              color = "blue")
 ```
 
-Figure 6. Temperature across all NEON sites
-```{r eval}
-# example plot - in order to make lines connect appropriately
-# the group option is needed
+Figure 7. Temperature across all NEON sites for Summer Months
+```{r summer-temperature-all-NEON-sites}
 aggregate_temperature %>%
-  distinct(siteID) 
-
-aggregate_temperature %>%
-  filter(siteID == "JERC") %>%
-  ggplot(aes(x = hour,
-             y = bioTempMean,
-             group = interaction(siteID, year, month, day),
-             color = month)) +
-  geom_line(alpha = 0.01) # alpha sets transparency
-
-
-aggregate_temperature %>%
-  group_by(siteID) %>%
-  summarize(mean_temp = mean(bioTempMean, na.rm = TRUE))
-```
-
-```{r}
-aggregate_temperature %>%
+  filter(year == 2017) %>%
+  filter(month %in% c(6, 7, 8)) %>%
   group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
-  filter(month(nameOfYourDateColumn) %in% c(5, 6, 7, 8))
+```
+
+Figure 8. Temperature across all NEON sites for Winter Months
+```{r winter-temperature-all-NEON-sites}
+aggregate_temperature %>%
+  filter(year == 2017) %>%
+  filter(month %in% c(12, 1, 2)) %>%
+  group_by(siteID) %>%
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
 ```
 
 

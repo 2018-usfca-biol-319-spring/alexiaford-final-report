@@ -26,15 +26,18 @@ This report will specifically be analyzing how the distribution of elevation var
 Delete this placeholder text, and replace it with your introduction text. You should include background on the NEON project including proper citations (e.g. [@thorpe2016introduction]) and other relevent background information related to your specific hypotheses. Add about 2-3 pages here. Across the whole manuscript, you should cite at least 20 peer reviewed articles.
 
 # Methods
-The mosquito NEON data comes from a wide range of NEON sites with varying domains. The sampling design is continuous across all sites to ensure data is consistent and comparable across time and space. The sampling methods include sampling mosquitoes at NEON sites using CDC CO2 light traps. All traps use CO2 as bait because CO2 attracts mosquitoes as it is a component of vertebrate breath that mosquitoes use to locate hosts. Once the mosquito is attracted to the trap a fan pulls the mosquitoes into a net bag for live storage until the trap is collected by a field technician. The design of the CDC CO2 light trap has remained intact since 1962, maintaining it's efficiency and effectiveness in use as the design has allowed for the removal of additional "trash" insects not swaying or adding to collection of data in anyway [@mcnelly1989cdc].
+The mosquito NEON data comes from a wide range of NEON sites with varying domains. The sampling design for NEON mosquito count data is continuous across all sites to ensure data is consistent and comparable across time and space. The sampling methods include sampling mosquitoes at NEON sites using CDC CO2 light traps. All traps use CO2 as bait because CO2 attracts mosquitoes as it is a component of vertebrate breath that mosquitoes use to locate hosts. Once the mosquito is attracted to the trap a fan pulls the mosquitoes into a net bag for live storage until the trap is collected by a field technician. The design of the CDC CO2 light trap has remained intact since 1962, maintaining it's efficiency and effectiveness in use as the design has allowed for the removal of additional "trash" insects not swaying or adding to collection of data in anyway [@mcnelly1989cdc].
 
 Once the trap is collected by a technician minimal processing occurs at the Domain lab. The mosquitoes are frozen, transferred and stored in dry sample vials at -80°C to be sent for identification and pathogen testing at a facility. Mosquitoes are identified at external facilities in order to minimize identification errors and accurately identify mosquitoes to species. Identification is based on visual examination of external morphology. After identification, target species are destructively tested for pathogens. 
 
-Using mosquito data collected and provided by NEON this report will use R and RStudio to visualize results and test how the distribution of elevation varies across NEON sites and differing species. To begin, the mosquito NEON data was read into RStudio. R and RStudio was used in conjunction with the ggplot2 and dplyr packages to analyze the data. ANOVA was used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub. 
+
+ADD MOSQUITO PATHOGEN STATUS
+
+NEON scientists collect IR biological temperature by measuring the paramaters of both ambient air and biological temperatures. Ambient temperature is measured at tower sites using single and triple redundant aspirated temperatures sensors. On the other hand, biological temperature, also known as surface temperature is measured using IR (infared) tempeature sensors located in the soil array and on the tower infastructure. These infared temperature sensors offer a non-contact method determining surface temperatures and resolve the radiation emitted by an object through a thermopile used to measure the difference between the target temperature and the seconsor body; and secondly a thermistor measure the temperature of the sensor body to reference the target temperature. Biological temperature can be used simutaneously with other collected measurements to analyze additional topics such as plant respiration, evapotranspiration rates, and stomatal conductance. These measurements by NEON have alloted for information on how climate and land changes alter ecosystem respiration, energy balance, and fire risk. 
 
 This report will specifically be analyzing how the distribution of elevation varies across all NEON sites and species using: 
 
-ADD TEMPERATURE AND MOSQUITO PATHOGEN STATUS
+
 
 Describe where the data came from, including the sets of sites you are comparing, how the data you are using were collected in the field, some information about those sites and why you chose them, and how you are analyzing them (e.g. using R to visualize the results and the statistical tests you will use).
 
@@ -48,6 +51,7 @@ Describe where the data came from, including the sets of sites you are comparing
 Add text here. Add text here. In this section instead of first person (I/we), use 'NEON', or 'NEON scientists', since you'll just be describing what they did.
 
 ## Data Analysis and Statistics
+Using mosquito data collected and provided by NEON this report will use R and RStudio to visualize results and test how the distribution of elevation varies across NEON sites and differing species. To begin, the mosquito NEON data was read into RStudio. R and RStudio was used in conjunction with the ggplot2 and dplyr packages to analyze the data. The ANOVA and Chi-square tests were used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub. 
 
 Add text here. Here this is all your work, so 'I/we' is fine.
 
@@ -115,6 +119,7 @@ ggplot(mos_pathogen_results,
 #r chi square test
 chisq.test(table(mos_pathogen_results$siteID, mos_pathogen_results$testResult))
 ```
+**Chi-square Test**
 p-value < 2.2e-16
 are significant differences in test results among sites
 
@@ -148,6 +153,7 @@ mos_pathogen_results %>%
 chisq.test(table(mos_pathogen_results$siteID,
                  mos_pathogen_results$scientificName))
 ```
+**Chi-square Test**
 if its significant its found there are different species at different sites
 
 Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites

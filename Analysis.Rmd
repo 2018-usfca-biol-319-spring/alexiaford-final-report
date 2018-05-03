@@ -12,6 +12,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction
+This report is testing how the distribution of elevation varies across the National Ecological Observatory Network (NEON) sites and differing species, using data collected and publicly presented by NEON. This report will explain NEON's work/purpose, NEON's design, test a hypothesis, and lastly analyze the results. The National Ecological Observatory Network is an observation platform for discovering, understanding, and forecasting the impacts of climate change, land use change, and invasive species on continental-scale ecology with sites distributed within 20 eco-climatic domains across United States, Alaska, Hawaii, and Puerto Rico using remote sensing technologies [@kampe2010neon]. NEON has allowed for easy accessible data to the public by providing the data the observatory has collected to scientists, land managers, policy makers, educators, and members of the general public interested in addressing these major ecological challenges. The data produced by NEON are strategically aimed at addressing ecological questions. Questions that are analyzing complex ecological processes and relationships that govern large scale patterns consistent with the measuring the drivers of change, biogeochemical cycling, and population and community responses across a variety of ecosystems in the ultimate hopes of expanding our understanding of ecological processes and to improve our ability to forecast these ecological changes [@thorpe2016introduction].
+
+The project is responsible for measuring the causes and effects of environmental change across the United States within varying domains that represent different landforms, vegetation, climate, and ecosystem dynamics. The project is constantly collecting data to provide and statistically represent ecological, physical, and biological variability across the US. NEON has four different site types that the observatory collects data from, these sites include: core terrestrial sites, core aquatic sites, relocatable terrestrial sites, and lastly relocatable aquatic sites. The sites are collected  using five measurement subsystems of the Observatory including: the Airborne Observation Platform (AOP), Aquatic Instrument System (AIS), Aquatic Observation System (AOS), Terrestrial Instrument System (TIS), and Terrestrial Observation System (TOS) [@thorpe2016introduction]. These five systems of measurement have been used to collect endless data and NEON has continued to do so by properly standardizing protocols across all sites and maintaining community best practices. 
+
+While NEON collects a wide range of data from atmospheric to even ecohydrology this report will specifically be looking at NEON's collection of mosquito data. The National Ecological Observatory Network (NEON) monitors mosquito populations across its broad geographical range of sites because of their prevalence in food webs, sensitivity to abiotic factors, and relevance for human health. Mosquitoes (sentinel taxa) are helpful organisms to use in study because they are a diverse family of insects with varying life spans and generation times with wide geographic distributions that allow for comparisons across the continent as well as across major vegetation types. Mosquitoes are of great importance to human health due to their epidemiological significance with associated diseases and their ecological influence of crops and healthy livestock. Mosquitoes are also ideal for evaluating the ecological effects of global change as mosquitoes are influenced by climate, vegetation, and host availability. Mosquitoes generally respond quickly to environmental change. Mosquitoes are highly mobile and move to new areas depending on climatic conditions. For, example, as climate warms some mosquitoes are expanding their geographical ranges and efficiency of transmission, resulting in mosquitoes having more interactions with humans [@hoekman2016design]. 
+
+NEON mosquito sampling takes place regularly during a time period in which mosquitoes are active, this varies by domain. Sampling typically takes place more frequently at core sites than relocatable sites. Core sites are prioritized because of the long‐term nature of core site sampling. In addition, core sites are in wild land areas and provide baseline data to assess how ecological systems are changing through time [@hoekman2016design]. 
+
+This report will specifically be analyzing how the distribution of elevation varies across all NEON sites and species using box plots and geographical data.
+
 
 Delete this placeholder text, and replace it with your introduction text. You should include background on the NEON project including proper citations (e.g. [@thorpe2016introduction]) and other relevent background information related to your specific hypotheses. Add about 2-3 pages here. Across the whole manuscript, you should cite at least 20 peer reviewed articles.
 
@@ -20,6 +30,9 @@ Delete this placeholder text, and replace it with your introduction text. You sh
 Describe where the data came from, including the sets of sites you are comparing, how the data you are using were collected in the field, some information about those sites and why you chose them, and how you are analyzing them (e.g. using R to visualize the results and the statistical tests you will use).
 
 ## Site Locations and Descriptions
+"STER" is short for NEON's North Sterling site. "STER" is a relocateable terrestrial site in the located in the central plains of Colorado just outside of Sterling in Northeastern Colorado. This plain is characterized by flat terrain and respresents an agronomic site within an urban area. "STER" is at the edge of a experimental field used for the long-term sustainable Dryland Agroecosystems Project (DAP) initiated in 1985 at three NEON eastern Colorado sites to study the effects of cropping intensity on production, water use effeiceincy, and soil chemical and physical properties. The "STER" vegetation consisted of the no-till cropping systems before establishment. By 1910 the site was under conventional tillage since it was taken from native sod. From 1910 to 1985 the conventional tillage ranged from moldboard plowing in the early years to sweep tillage in the later years. The primary crop was winter winter grown in a wheat-fallow rotation with occasional growth of proso millet before 1985. In 1986 grass stands were established that contain a mixture of perennial species including both warm and cool season grasses. The climate of this site constists of hot and low humidity summers and winters typically around freezing point but can possibly drop lower. "STER" faces occasional hailstorms and thunderstorms during the growing seasons, as well as seasonal high winds and tornados in North Sterling. The site provides an understanding of the effects of both climate change and chemical climate to understand and contrast ecological process with other and within cross-domain analyses. A standard selection of data is collected from this site however data from this location provides a baseline for evaluating changes due to invasive species and infectious disease along both a rural and urban gradient in time or space. Overall, Colorados national average population is growing 3 times the national average with the population expected to surpass 5.7 million by 2030. 
+
+ADD ANOTHER SITE 
 
 Add text here. In this section instead of first person (I/we), use 'NEON', or 'NEON scientists', since you'll just be describing what they did.
 
@@ -45,6 +58,7 @@ library("tidyr")
 library("ggplot2")
 library("readr")
 library("knitr")
+library("lubridate")
 ```
 
 ```{r read-in-data}
@@ -52,6 +66,7 @@ mos_pathogen_results <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_patho
 count_mos_taxonomist_ID <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expertTaxonomistIDProcessed.csv")
 count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
 aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
+
 ```
 
 Figure 1. Boxplot of the Elevation of all NEON sites
@@ -100,12 +115,24 @@ mos_pathogen_results %>%
   summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
   arrange(desc(mean_elev)) %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
-
 ```
 
-Figure 4. 
-```{r}
+Figure 4. Boxplot for STER site
+```{r boxplot-for-STER-site}
+# make a boxplot for the elevation of mosquitos at "STER" NEON site
+mos_pathogen_results %>%
+  filter(siteID.taxa == "STER") %>%
+  filter(!is.na(scientificName)) %>%
+  ggplot(aes(x = scientificName,
+             y = elevation)) +
+  geom_boxplot() +
+  ggtitle("Elevation of Mosquitos Species at STER NEON site") +
+  xlab("Species") +
+  ylab("Elevation (meters)")
 
+#r statistical test
+#anova(lm(elevation ~ scientificName,
+ #        data = mos_all))
 ```
 
 
@@ -147,14 +174,32 @@ ggplot() +
              color = "blue")
 ```
 
-Figure 6. Temperature
-```{r eval=FALSE}
+Figure 6. Temperature across all NEON sites
+```{r eval}
 # example plot - in order to make lines connect appropriately
 # the group option is needed
-ggplot(temp_in, aes(x = hour,
-                    y = bioTempMean,
-                    group = interaction(siteID, year, month, day))) +
+aggregate_temperature %>%
+  distinct(siteID) 
+
+aggregate_temperature %>%
+  filter(siteID == "JERC") %>%
+  ggplot(aes(x = hour,
+             y = bioTempMean,
+             group = interaction(siteID, year, month, day),
+             color = month)) +
   geom_line(alpha = 0.01) # alpha sets transparency
+
+
+aggregate_temperature %>%
+  group_by(siteID) %>%
+  summarize(mean_temp = mean(bioTempMean, na.rm = TRUE))
+```
+
+```{r}
+aggregate_temperature %>%
+  group_by(siteID) %>%
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
+  filter(month(nameOfYourDateColumn) %in% c(5, 6, 7, 8))
 ```
 
 

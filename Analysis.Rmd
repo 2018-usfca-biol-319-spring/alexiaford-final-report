@@ -94,9 +94,11 @@ ggplot(count_mos_all, aes(y = mean_elev,
   ylab("Elevation (m)") +
   ggtitle("Elevation in meters of all NEON Sites")
 
-#r anova statistical test
-  
+#r statistical test
+anova(lm(elevation ~ siteID,
+         data = mos_pathogen_results))
 ```
+2.2e-16 highly significant because  p < 0.001 tells me sites have different elevations
 
 Figure 2. Barplot of the Count of Test Results of Mosquitos at all NEON sites
 ```{r barplot-of-count-of-test-results-at-all-sites}
@@ -111,7 +113,10 @@ ggplot(mos_pathogen_results,
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 #r chi square test
+chisq.test(table(mos_pathogen_results$siteID, mos_pathogen_results$testResult))
 ```
+p-value < 2.2e-16
+are significant differences in test results among sites
 
 Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
@@ -122,9 +127,9 @@ mos_pathogen_results %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
 ```
 
-Figure 4. Boxplot for the Test Results of Mosquito Species at all NEON sites
-```{r boxplot-for-test-result-all-NEON-sites}
-# make a boxplot for the test Results of mosquito species at all NEON sites
+Figure 4. Barplot for the Test Results of Mosquito Species at all NEON sites
+```{r barplot-for-test-result-all-NEON-sites}
+# make a barplot for the test Results of mosquito species at all NEON sites
 mos_pathogen_results$scientificName <-
   as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
                             split = "\\.", ), `[`, 4),
@@ -139,10 +144,11 @@ mos_pathogen_results %>%
   xlab("Test Result") +
   ylab("Count of Mosquitos")
 
-#r statistical test
-#anova(lm(elevation ~ scientificName,
- #        data = mos_all))
+#r chi square test
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$scientificName))
 ```
+if its significant its found there are different species at different sites
 
 Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
 ```{r map-of-elevation-pathogen-results-all-sites}

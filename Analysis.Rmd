@@ -53,8 +53,6 @@ Add text here. Here this is all your work, so 'I/we' is fine.
 
 # Results
 
-## Subsections are ok in the results section too
-
 Add a number of code chunks in the Results section. These should read in, subset and plot the data as needed (no need to save any figures to pdf, since they will be put into the rendered document when you click 'knit'), and, for any hypotheses that you want to test, an appropriate statistical test. You should have at least 5-10 figures and/or tables in this section, which you use to test your hypotheses against the dataset. 
 
 ```{r load-packages}
@@ -124,9 +122,9 @@ mos_pathogen_results %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
 ```
 
-Figure 4. Boxplot for STER site
-```{r boxplot-for-STER-site}
-# make a boxplot for the elevation of mosquitos at "STER" NEON site
+Figure 4. Boxplot for the Test Results of Mosquito Species at all NEON sites
+```{r boxplot-for-test-result-all-NEON-sites}
+# make a boxplot for the test Results of mosquito species at all NEON sites
 mos_pathogen_results$scientificName <-
   as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
                             split = "\\.", ), `[`, 4),
@@ -135,24 +133,18 @@ mos_pathogen_results$scientificName <-
 mos_pathogen_results %>%
   filter(!is.na(scientificName)) %>%
   ggplot(aes(fill = scientificName,
-             x = elevation)) +
+             x = testResult)) +
   geom_bar(position = position_dodge()) +
-  ggtitle("Elevation of Mosquitos Species at STER NEON site") +
-  xlab("Elevation (m)") +
-  ylab("Count")
+  ggtitle("Test Results of Mosquito Species at all NEON sites") +
+  xlab("Test Result") +
+  ylab("Count of Mosquitos")
 
 #r statistical test
 #anova(lm(elevation ~ scientificName,
  #        data = mos_all))
 ```
 
-
-Figure 5. Boxplot for JERC site
-```{r}
-
-```
-
-Figure 6. Map of the Elevation of Pathogen Results at all NEON Sites
+Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
 ```{r map-of-elevation-pathogen-results-all-sites}
 usa_map <- map_data("usa")
 
@@ -190,7 +182,7 @@ ggplot() +
              color = "blue")
 ```
 
-Figure 7. Temperature across all NEON sites for Summer Months
+Figure 6. Temperature across all NEON sites for Summer Months
 ```{r summer-temperature-all-NEON-sites}
 aggregate_temperature %>%
   filter(year == 2017) %>%
@@ -199,7 +191,7 @@ aggregate_temperature %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
 ```
 
-Figure 8. Temperature across all NEON sites for Winter Months
+Figure 7. Temperature across all NEON sites for Winter Months
 ```{r winter-temperature-all-NEON-sites}
 aggregate_temperature %>%
   filter(year == 2017) %>%

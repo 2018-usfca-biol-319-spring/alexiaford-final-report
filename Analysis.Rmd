@@ -100,7 +100,9 @@ ggplot(count_mos_all, aes(y = mean_elev,
 anova(lm(elevation ~ siteID,
          data = mos_pathogen_results))
 ```
-2.2e-16 highly significant because  p < 0.001 tells me sites have different elevations
+**ANOVA Test***
+ANOVA p-value: 2.2e-16 
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the NEON sites do in fact have differing elevations. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this box plot and for this reason we can reject the null hypothesis.
 
 Figure 2. Barplot of the Count of Test Results of Mosquitos at all NEON sites
 ```{r barplot-of-count-of-test-results-at-all-sites}
@@ -118,8 +120,8 @@ ggplot(mos_pathogen_results,
 chisq.test(table(mos_pathogen_results$siteID, mos_pathogen_results$testResult))
 ```
 **Chi-square Test**
-p-value < 2.2e-16
-are significant differences in test results among sites
+Chi-square p-value: 2.2e-16
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact significant differences in test results among NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
 Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
@@ -152,7 +154,8 @@ chisq.test(table(mos_pathogen_results$siteID,
                  mos_pathogen_results$scientificName))
 ```
 **Chi-square Test**
-if its significant its found there are different species at different sites
+Chi-square p-value: 2.2e-16
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
 Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
 ```{r map-of-elevation-pathogen-results-all-sites}

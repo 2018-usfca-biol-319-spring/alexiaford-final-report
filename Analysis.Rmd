@@ -170,7 +170,7 @@ pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
 ggplot() +
-  ggtitle("Map of Pathogen Results Across NEON Sites") +
+  ggtitle("Map of Pathogen Test Results Across NEON Sites") +
   geom_polygon(data = usa_map,
                aes(x = long,
                    y = lat,
@@ -185,7 +185,7 @@ ggplot() +
              aes(x = mean_long,
                  y = mean_lat,
                  size = c(8, 0, 0, 4, 62, 0)), # number of positive tests
-             color = "blue")
+             color = "grey")
 ```
 
 Figure 6. Temperature Across NEON sites for Summer Months
@@ -214,11 +214,11 @@ Figure 3 is a mean elevation table using the mosquito pathogen results from NEON
 
 Figure 4 is a barplot for the test results of mosquito species across NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. The x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results displays data for all eight species of mosquitos and counts of mosquitos for these eight species ranging from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65 reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 4, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
-Figure 5 is a United States map of the pathogen results acorss NEON Sites. !?!??!?!
+Figure 5 is a United States map of the pathogen test results across NEON sites with the y-axis being latitiude values and the x-axis being longitude values. The black dots displayed demonstrate negative mosquito test results for pathogen-borne statuses while the grey dots demonstrate positive mosquito test results for pathogen borne-statuses. In this figure both positive and negative tests are shown to have taken place in the same general area. The map exhibits overall more negative test results than there are positive test results. 
 
 Figure 6 indicates the average summer temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the summer months of June, July, and August. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from 6.33 (being the lowest at the "BARR" site) to 28.8 (being the highest temperature at the "OSBS" site). 
 
-Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site). 
+Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site). 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.
 

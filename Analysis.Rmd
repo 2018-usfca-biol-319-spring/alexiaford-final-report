@@ -20,10 +20,6 @@ While NEON collects a wide range of data from atmospheric to even ecohydrology t
 
 In addition to analyzing the effect temperature has on mosquitos I would also like to look at the geographical effect on mosquito-borne pathogen statuses, such as mosquito migration to rivers and the abundance of mosquitos found near bodies of water as human abundance is also typically higher near water. I will do this by analyzing the sites that have high mosquito abundance/pathogen status. I would like to test the hypothesis that the sites near water will have an increase in mosquito-borne pathogen status. 
 
-
-NEON mosquito sampling takes place regularly during a time period in which mosquitoes are active, this varies by domain. Sampling typically takes place more frequently at core sites than relocatable sites. Core sites are prioritized because of the long‐term nature of core site sampling. In addition, core sites are in wild land areas and provide baseline data to assess how ecological systems are changing through time [@hoekman2016design]. ????????/
-
-
 Delete this placeholder text, and replace it with your introduction text. You should include background on the NEON project including proper citations (e.g. [@thorpe2016introduction]) and other relevent background information related to your specific hypotheses. Add about 2-3 pages here. Across the whole manuscript, you should cite at least 20 peer reviewed articles.
 
 # Methods
@@ -37,7 +33,7 @@ The third set is IR biological temperature. NEON scientists collect IR biologica
 
 This report will specifically be analyzing how the distribution of elevation varies across all NEON sites and species using: 
 
-
+WHY U CHOSE SITES?
 
 Describe where the data came from, including the sets of sites you are comparing, how the data you are using were collected in the field, some information about those sites and why you chose them, and how you are analyzing them (e.g. using R to visualize the results and the statistical tests you will use).
 
@@ -73,9 +69,9 @@ aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_
 
 ```
 
-Figure 1. Boxplot of the Elevation of all NEON sites
+Figure 1. Boxplot of the Elevation Across NEON sites
 ```{r combine-datasets}
-# boxplot of the elevation of all NEON sites
+# boxplot of the elevation of across NEON sites
 summarized_plots <- count_mos_trapping %>%
   group_by(plotID) %>%
   summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
@@ -91,7 +87,7 @@ ggplot(count_mos_all, aes(y = mean_elev,
   geom_boxplot() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Elevation (m)") +
-  ggtitle("Elevation in meters of all NEON Sites")
+  ggtitle("Elevation in Meters Across NEON Sites")
 
 #r statistical test
 anova(lm(elevation ~ siteID,
@@ -101,14 +97,14 @@ anova(lm(elevation ~ siteID,
 ANOVA p-value: 2.2e-16 
 This p-value is highly significant because the p-value is less than 0.001. This tells me that the NEON sites do in fact have differing elevations. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this box plot and for this reason we can reject the null hypothesis.
 
-Figure 2. Barplot of the Count of Test Results of Mosquitos at all NEON sites
-```{r barplot-of-count-of-test-results-at-all-sites}
-# count test results of mosquitos at all NEON sites 
+Figure 2. Barplot of the Count of Test Results of Mosquitos Across NEON sites
+```{r barplot-of-count-of-test-results-across-sites}
+# count test results of mosquitos across NEON sites 
 ggplot(mos_pathogen_results,
        aes(x = siteID,
            fill = testResult)) +
   geom_bar() +
-  ggtitle("Count of Test Results of Mosquitos at all NEON sites") +
+  ggtitle("Count of Test Results of Mosquitos Across NEON sites") +
   xlab("Site ID") +
   ylab("Count of Test Results") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
@@ -129,9 +125,9 @@ mos_pathogen_results %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
 ```
 
-Figure 4. Barplot for the Test Results of Mosquito Species at all NEON sites
-```{r barplot-for-test-result-all-NEON-sites}
-# make a barplot for the test Results of mosquito species at all NEON sites
+Figure 4. Barplot for the Test Results of Mosquito Species Across NEON sites
+```{r barplot-for-test-result-across-NEON-sites}
+# make a barplot for the test Results of mosquito species across NEON sites
 mos_pathogen_results$scientificName <-
   as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
                             split = "\\.", ), `[`, 4),
@@ -142,7 +138,7 @@ mos_pathogen_results %>%
   ggplot(aes(fill = scientificName,
              x = testResult)) +
   geom_bar(position = position_dodge()) +
-  ggtitle("Test Results of Mosquito Species at all NEON sites") +
+  ggtitle("Test Results of Mosquito Species Across NEON sites") +
   xlab("Test Result") +
   ylab("Count of Mosquitos")
 
@@ -154,8 +150,8 @@ chisq.test(table(mos_pathogen_results$siteID,
 Chi-square p-value: 2.2e-16
 This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
-Figure 5. Map of the Pathogen Results at all NEON Sites
-```{r map-of-elevation-pathogen-results-all-sites}
+Figure 5. Map of the Pathogen Results across NEON Sites
+```{r map-of-elevation-pathogen-results-across-sites}
 usa_map <- map_data("usa")
 
 points_with_lat_long <- mos_pathogen_results %>%
@@ -174,7 +170,7 @@ pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
 ggplot() +
-  ggtitle("Map of Pathogen Results at all NEON Sites") +
+  ggtitle("Map of Pathogen Results Across NEON Sites") +
   geom_polygon(data = usa_map,
                aes(x = long,
                    y = lat,
@@ -192,8 +188,8 @@ ggplot() +
              color = "blue")
 ```
 
-Figure 6. Temperature across all NEON sites for Summer Months
-```{r summer-temperature-all-NEON-sites}
+Figure 6. Temperature Across NEON sites for Summer Months
+```{r summer-temperature-across-NEON-sites}
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(6, 7, 8)) %>%
@@ -201,8 +197,8 @@ aggregate_temperature %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
 ```
 
-Figure 7. Temperature across all NEON sites for Winter Months
-```{r winter-temperature-all-NEON-sites}
+Figure 7. Temperature Across NEON sites for Winter Months
+```{r winter-temperature-across-NEON-sites}
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(12, 1, 2)) %>%
@@ -210,15 +206,19 @@ aggregate_temperature %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
 ```
 
-Figure 1 is a boxplot of the elevation of all NEON sites. This boxplot displays a total of 33 NEON sites across the x-axis with elevation in meters on a scale from 0 to 2000 meters across the y-axis. The boxplot exhibits most of the sites either under or over 1000 meters, and the majority of sites are shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
+Figure 1 is a boxplot of the elevation across NEON sites. This boxplot displays a total of 33 NEON sites across the x-axis with elevation in meters on a scale from 0 to 2000 meters across the y-axis. The boxplot exhibits most of the sites either under or over 1000 meters, and the majority of sites are shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
-Figure 2 is a barplot of the count of test results of mosquitos at all NEON sites. Count of test results are along the y-axis on a scale from 0 to 400 count of mosquitos, with the test results shown in red, green, and blue. Red is an inconclusive test result, green is a negative test result, and blue is a positive test result. SiteID is shown on the x-axis. A total of six NEON sites are shown including: "CPER", "JERC", "ONAQ","OSBS","STER", and "TALL". The "CPER" site exhibits about 225 total count of mosquitos, most of which are negative with only about 10 or so positive test results. The "JERC" site displays about 30 total count of mosquitos, most being negative and only a sliver being inconclusive. The "ONAQ" site has the least amount of count of mosquitos, only about 10 total, all of which are negative. The fourth site, "OSBS" presents the most amount of test results of all the sites with about a 375 total mosquito count, and is the only site with all three test results. The predominant test result for this site is negative with about 5 positive tests and about 15 inconclusive tests. Next, the "STER" site reveals a total of about 190 mosquitos. This site displays the most about of positive test results than any other site with about 1/3 of the test results being positive and 2/3 of the test results being negative. Lastly, the "TALL" site exhibits about 100 total mosquito counts of test results, most being negative and only a couple being inconclusive. A chi-square test was performed for Figure 2, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
+Figure 2 is a barplot of the count of test results of mosquitos across NEON sites. Count of test results are along the y-axis on a scale from 0 to 400 count of mosquitos, with the test results shown in red, green, and blue. Red is an inconclusive test result, green is a negative test result, and blue is a positive test result. SiteID is shown on the x-axis. A total of six NEON sites are shown including: "CPER", "JERC", "ONAQ","OSBS","STER", and "TALL". The "CPER" site exhibits about 225 total count of mosquitos, most of which are negative with only about 10 or so positive test results. The "JERC" site displays about 30 total count of mosquitos, most being negative and only a sliver being inconclusive. The "ONAQ" site has the least amount of count of mosquitos, only about 10 total, all of which are negative. The fourth site, "OSBS" presents the most amount of test results of all the sites with about a 375 total mosquito count, and is the only site with all three test results. The predominant test result for this site is negative with about 5 positive tests and about 15 inconclusive tests. Next, the "STER" site reveals a total of about 190 mosquitos. This site displays the most about of positive test results than any other site with about 1/3 of the test results being positive and 2/3 of the test results being negative. Lastly, the "TALL" site exhibits about 100 total mosquito counts of test results, most being negative and only a couple being inconclusive. A chi-square test was performed for Figure 2, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
 Figure 3 is a mean elevation table using the mosquito pathogen results from NEON for six of the NEON sites. The table's x-values are site ID including the "ONAQ","CPER", "STER", "TALL", "JERC", and "OSBS" sites. The y-value's are the mean elevation in meters of each of the six NEON sites. The "ONAQ" site's mean elevation is 1656 meters, the "CPER" site's mean elevation is 1654 meters, the "STER" site's mean elevation is 1364 meters, the "TALL" site's mean elevation is 166.9 meters, the "JERC" site's mean elevation is 47 meters, and lastly the "OSBS" site's mean elevation is 46 meters. This table exhibits that half sites mean elevations are around high ranging from 1000 to 2000 meters while the other half of the mean elevations are low ranging from 40 to 200 meters. 
 
-Figure 4 is a barplot for the test results of mosquito species at all NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. The x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results displays data for all eight species of mosquitos and counts of mosquitos for these eight species ranging from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65 reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 4, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
+Figure 4 is a barplot for the test results of mosquito species across NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. The x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results displays data for all eight species of mosquitos and counts of mosquitos for these eight species ranging from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65 reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 4, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
-Figure 5 is a United States map of the pathogen results at all NEON Sites. 
+Figure 5 is a United States map of the pathogen results acorss NEON Sites. !?!??!?!
+
+Figure 6 indicates the average summer temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the summer months of June, July, and August. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from 6.33 (being the lowest at the "BARR" site) to 28.8 (being the highest temperature at the "OSBS" site). 
+
+Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site). 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.
 

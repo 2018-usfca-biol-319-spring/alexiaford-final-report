@@ -50,9 +50,7 @@ Describe where the data came from, including the sets of sites you are comparing
 Add text here. Add text here. In this section instead of first person (I/we), use 'NEON', or 'NEON scientists', since you'll just be describing what they did.
 
 ## Data Analysis and Statistics
-Using mosquito data collected and provided by NEON this report will use R and RStudio to visualize results and test how the distribution of elevation varies across NEON sites and differing species. To begin, the mosquito NEON data was read into RStudio. R and RStudio was used in conjunction with the ggplot2 and dplyr packages to analyze the data. The ANOVA and Chi-square tests were used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub. 
-
-Add text here. Here this is all your work, so 'I/we' is fine.
+Using mosquito data collected and provided by NEON this report will use R and RStudio to visualize results and test how the distribution of elevation varies across NEON sites and differing species?????. To begin, the mosquito count, mosquito-borne pathogen status, and IR biological temperature NEON data was read into RStudio. R and RStudio were used in conjunction with five packages including ggplot2 and dplyr to analyze the data. The ANOVA and chi-square tests were used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub. 
 
 # Results
 
@@ -210,8 +208,6 @@ aggregate_temperature %>%
   group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
 ```
-
-
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.
 

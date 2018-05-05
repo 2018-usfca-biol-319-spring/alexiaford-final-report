@@ -154,7 +154,7 @@ chisq.test(table(mos_pathogen_results$siteID,
 Chi-square p-value: 2.2e-16
 This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
-Figure 5. Map of the Elevation of Pathogen Results at all NEON Sites
+Figure 5. Map of the Pathogen Results at all NEON Sites
 ```{r map-of-elevation-pathogen-results-all-sites}
 usa_map <- map_data("usa")
 
@@ -174,7 +174,7 @@ pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
 ggplot() +
-  ggtitle("Elevation of Pathogen Results at all NEON Sites") +
+  ggtitle("Map of Pathogen Results at all NEON Sites") +
   geom_polygon(data = usa_map,
                aes(x = long,
                    y = lat,
@@ -216,11 +216,9 @@ Figure 2 is a barplot of the count of test results of mosquitos at all NEON site
 
 Figure 3 is a mean elevation table using the mosquito pathogen results from NEON for six of the NEON sites. The table's x-values are site ID including the "ONAQ","CPER", "STER", "TALL", "JERC", and "OSBS" sites. The y-value's are the mean elevation in meters of each of the six NEON sites. The "ONAQ" site's mean elevation is 1656 meters, the "CPER" site's mean elevation is 1654 meters, the "STER" site's mean elevation is 1364 meters, the "TALL" site's mean elevation is 166.9 meters, the "JERC" site's mean elevation is 47 meters, and lastly the "OSBS" site's mean elevation is 46 meters. This table exhibits that half sites mean elevations are around high ranging from 1000 to 2000 meters while the other half of the mean elevations are low ranging from 40 to 200 meters. 
 
-Figure 4 is a barplot for the test results of mosquito species at all NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. The x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos under 25. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative data displays data for all eight species of mosquitos and counts of mosquitos for each individual species ranging from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for each ??
+Figure 4 is a barplot for the test results of mosquito species at all NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. The x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results displays data for all eight species of mosquitos and counts of mosquitos for these eight species ranging from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65 reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 4, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
-A chi-square test was performed for Figure 4, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
-
-SHOULD U ADD MORE ABOUT THE TESTS IN RESULTS?
+Figure 5 is a United States map of the pathogen results at all NEON Sites. 
 
 In addition to a minimum of 5-10 figures/tables (and associated captions), you should include sufficient text in this section to describe what your findings were. Remember that in the Results section you just describe what you found, but you don't interpret it - that happens in the Discussion. 2-3 pages.
 

@@ -115,32 +115,7 @@ mos_pathogen_results %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
 ```
 
-Figure 4. Barplot for the Test Results of Mosquito Species Across NEON sites
-```{r barplot-for-test-result-across-NEON-sites}
-# make a barplot for the test Results of mosquito species across NEON sites
-mos_pathogen_results$scientificName <-
-  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
-                            split = "\\.", ), `[`, 4),
-       mode = "character")
-
-mos_pathogen_results %>%
-  filter(!is.na(scientificName)) %>%
-  ggplot(aes(fill = scientificName,
-             x = testResult)) +
-  geom_bar(position = position_dodge()) +
-  ggtitle("Test Results of Mosquito Species Across NEON sites") +
-  xlab("Test Result") +
-  ylab("Count of Mosquitos")
-
-#r statistical test
-chisq.test(table(mos_pathogen_results$siteID,
-                 mos_pathogen_results$scientificName))
-```
-**Chi-square Test**
-Chi-square p-value: 2.2e-16
-This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
-
-Figure 5. Map of the Pathogen Results across NEON Sites
+Figure 4. Map of the Pathogen Results across NEON Sites
 ```{r map-of-elevation-pathogen-results-across-sites}
 usa_map <- map_data("usa")
 
@@ -178,6 +153,31 @@ ggplot() +
              color = "grey")
 ```
 
+Figure 5. Barplot for the Test Results of Mosquito Species Across NEON sites
+```{r barplot-for-test-result-across-NEON-sites}
+# make a barplot for the test Results of mosquito species across NEON sites
+mos_pathogen_results$scientificName <-
+  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
+                            split = "\\.", ), `[`, 4),
+       mode = "character")
+
+mos_pathogen_results %>%
+  filter(!is.na(scientificName)) %>%
+  ggplot(aes(fill = scientificName,
+             x = testResult)) +
+  geom_bar(position = position_dodge()) +
+  ggtitle("Test Results of Mosquito Species Across NEON sites") +
+  xlab("Test Result") +
+  ylab("Count of Mosquitos")
+
+#r statistical test
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$scientificName))
+```
+**Chi-square Test**
+Chi-square p-value: 2.2e-16
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
+
 Figure 6. Temperature Across NEON sites for Summer Months
 ```{r summer-temperature-across-NEON-sites}
 aggregate_temperature %>%
@@ -202,22 +202,22 @@ Figure 2 is a barplot of the count of test results of mosquitos across NEON site
 
 Figure 3 is a mean elevation table using the mosquito pathogen results from NEON for six of the NEON sites. The table's x-values are site ID including the "ONAQ","CPER", "STER", "TALL", "JERC", and "OSBS" sites. The y-value's are the mean elevation in meters of each of the six NEON sites. The "ONAQ" site's mean elevation is 1656 meters, the "CPER" site's mean elevation is 1654 meters, the "STER" site's mean elevation is 1364 meters, the "TALL" site's mean elevation is 166.9 meters, the "JERC" site's mean elevation is 47 meters, and lastly the "OSBS" site's mean elevation is 46 meters. This table exhibits that half sites mean elevations are high, ranging from 1000 to 2000 meters, while the other half of the mean elevations are low, ranging from 40 to 200 meters. 
 
-Figure 4 is a barplot for the test results of mosquito species across NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. Along the x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results display data for all eight species of mosquitos and the counts of mosquitos for these eight species range from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65, reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 4, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
+Figure 4 is a United States map of the pathogen test results across NEON sites. Along the y-axis are latitiude values and along the x-axis are longitude values. The black dots displayed demonstrate negative mosquito test results for pathogen-borne statuses while the grey dots demonstrate positive mosquito test results for pathogen borne-statuses. In this figure both positive and negative tests are shown to have taken place in the same general area. The map exhibits overall more negative test results than there are positive test results. 
 
-Figure 5 is a United States map of the pathogen test results across NEON sites. Along the y-axis are latitiude values and along the x-axis are longitude values. The black dots displayed demonstrate negative mosquito test results for pathogen-borne statuses while the grey dots demonstrate positive mosquito test results for pathogen borne-statuses. In this figure both positive and negative tests are shown to have taken place in the same general area. The map exhibits overall more negative test results than there are positive test results. 
+Figure 5 is a barplot for the test results of mosquito species across NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. Along the x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amout of counted mosquitos and the most amount of species present. The negative test results display data for all eight species of mosquitos and the counts of mosquitos for these eight species range from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65, reavealing the most amount of positive counts overall. A chi-square test was performed for Figure 5, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 
 
 Figure 6 indicates the average summer temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the summer months of June, July, and August. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from 6.33 (being the lowest at the "BARR" site) to 28.8 (being the highest temperature at the "OSBS" site). 
 
 Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site). 
 
 # Discussion
-Figure 1 broadly introduces the varying elevations across NEON sites, displaying a majority of sites below 1000 meters while six total sites are above 1000 meters, including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". While examining Figure 2, the count of test results of mosquitos across NEON sites, it is found that three of the six sites tested for mosquitos also had an elevation above 1000 meters, these sites are: "CPER", "ONAQ", and "STER". These three sites are all located in Colorado and have elevations ranging from 1364 to 1656 meters, seen in Figure 3, while the other three sites, "TALL", "JERC", and "OSBS", in Figure 3 are under 200 meters. Additionally, Figure 2, exhibits that these two sites of higher elevation, "CPER" and "STER" have positive test results while "ONAQ" is the only high elevation site that has no positive test results. This is surprising as the studies have shown that lower elevation sites are much more likely to have outbreaks of mosquito pathogens. For example, outbreaks of *A. albopictus* in Hawaii in 2001 among native Hawaiian birds have had serious consequences for conservation of endemic avian species, particularly at low elevations [@juliano2005ecology]. Although this is the case, there have been further studies done in Colorado further explaining that lower elevations are more likely to have higher mosquito abundance. A study done at the Northern Colorado Front Range, with a similar elevation range of 1500–2400 meters. The study conducted shows that species richness was highest in plains habitats at elevations below 1600 meters. Numerous mosquito species were found exclusively or predominantly at low elevations below 1700 meters [@eisen2008mosquito]. This makes sense as these sites are of much lower elevation relatively in Colorado as some Colorado elevation reaches above 2000 meters. On the other hand, "TALL", "JERC", and "OSBS" are the only sites with elevations under 200 meters and only "OSBS" presents positive test results. This however is not surprising as the "OSBS" site is located in Southeast Florida, a core terrestrial site with the lowest elevation at about 46 meters that is surrounded by multiple lakes. Studies done for terrestrial and marine biota show that mosquito transmission is the lowest at high elevations where mosquitoes are limited by cool temperatures and transmission of malaria and pox and therefore varies from endemic transmission in warm, low-elevation terrestrial sites to irregular outbreaks at mid-elevation terrestrial sites [@harvell2002climate]. Figure 5 is a United States map of pathogen test results performed by NEON illustrating the idea of elevation in relation to pathogen-borne status. Although in Figure 5 since the majority of the data collected takes place in Colorado and Florida it makes it difficult to differientiate if lower elevation or sites near water have increased mosquito-borne pathogen status, since collection is only shown at NEON's Colorado and Florida sites and the test results are almost equal in terms of negative test results (black) and postitive test results (grey).
+Figure 1 broadly introduces the varying elevations across NEON sites, displaying a majority of sites below 1000 meters while six total sites are above 1000 meters, including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". While examining Figure 2, the count of test results of mosquitos across NEON sites, it is found that three of the six sites tested for mosquitos also had an elevation above 1000 meters, these sites are: "CPER", "ONAQ", and "STER". These three sites are all located in Colorado and have elevations ranging from 1364 to 1656 meters, seen in Figure 3, while the other three sites, "TALL", "JERC", and "OSBS", in Figure 3 are under 200 meters. Additionally, Figure 2, exhibits that these two sites of higher elevation, "CPER" and "STER" have positive test results while "ONAQ" is the only high elevation site that has no positive test results. This is surprising as the studies have shown that lower elevation sites are much more likely to have outbreaks of mosquito pathogens. For example, outbreaks of *A. albopictus* in Hawaii in 2001 among native Hawaiian birds have had serious consequences for conservation of endemic avian species, particularly at low elevations [@juliano2005ecology]. Although this is the case, there have been further studies done in Colorado further explaining that lower elevations are more likely to have higher mosquito abundance. A study done at the Northern Colorado Front Range, with a similar elevation range of 1500–2400 meters. The study conducted shows that species richness was highest in plains habitats at elevations below 1600 meters. Numerous mosquito species were found exclusively or predominantly at low elevations below 1700 meters [@eisen2008mosquito]. This makes sense as these sites are of much lower elevation relatively in Colorado as some Colorado elevation reaches above 2000 meters. On the other hand, "TALL", "JERC", and "OSBS" are the only sites with elevations under 200 meters and only "OSBS" presents positive test results. This however is not surprising as the "OSBS" site is located in Southeast Florida, a core terrestrial site with the lowest elevation at about 46 meters that is surrounded by multiple lakes. Studies done for terrestrial and marine biota show that mosquito transmission is the lowest at high elevations where mosquitoes are limited by cool temperatures and transmission of malaria and pox and therefore varies from endemic transmission in warm, low-elevation terrestrial sites to irregular outbreaks at mid-elevation terrestrial sites [@harvell2002climate]. Figure 4 is a United States map of pathogen test results performed by NEON illustrating the idea of elevation in relation to pathogen-borne status. Although in Figure 4 since the majority of the data collected takes place in Colorado and Florida it makes it difficult to differientiate if lower elevation or sites near water have increased mosquito-borne pathogen status, since collection is only shown at NEON's Colorado and Florida sites and the test results are almost equal in terms of negative test results (black) and postitive test results (grey). 
+
+Figure 5, test results of mosquito species across NEON sites, surveys species in relation to test results instead of elevation. The legend in Figure 5 exhibits a total of eight color coded scientific names. All eight names are found in the negative test results with varying
 
 I would like to test the hypothesis that as temperature increases mosquito-borne pathogen status also increases. 
 
 I would like to test the hypothesis that the sites near water will have an increase in mosquito-borne pathogen status. 
-
-This is further explained looking at a study done in Colorado, at the Northern Colorado Front Range, with a similar elevation range of 1,500–2,400 meters. The study conducted shows that species richness was highest in plains habitats at elevations below 1,600 meters. Numerous mosquito species were found exclusively or predominantly at low elevations below 1,700 meters [@eisen2008mosquito]. 
 
 Discuss the results you found in the context of what you know about the site/sites and the predominant types of ecosystems in those locations. Think also about the community dynamics, different types of species interactions, food webs, trophic transfer, energy flow, etc. Should be around 3-4 pages interpreting your results and considering future directions you could take in analyzing these data.
 

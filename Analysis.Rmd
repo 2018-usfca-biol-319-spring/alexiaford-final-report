@@ -41,8 +41,7 @@ Using the three data sets collected and provided by NEON this report will use R 
 
 # Results
 ```{r load-packages}
-# If you add any additional packages here, make sure they are
-# also listed in the DESCRIPTION file
+#load packages
 library("dplyr")
 library("tidyr")
 library("ggplot2")
@@ -60,7 +59,7 @@ mos_pathogen_results <- read_csv(
 count_mos_taxonomist_id <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/",
-         "mos_expertTaxonomistidProcessed.csv"))
+         "mos_expertTaxonomistIDProcessed.csv"))
 count_mos_trapping <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/mos_trapping.csv"))
@@ -73,7 +72,7 @@ Figure 1. Box plot of the Elevation Across NEON sites
 ```{r combine-datasets}
 # boxplot of the elevation of across NEON sites
 summarized_plots <- count_mos_trapping %>%
-  group_by(plotid) %>%
+  group_by(plotID) %>%
   summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
             mean_long = mean(decimalLongitude, na.rm = TRUE),
             mean_elev = mean(elevation, na.rm = TRUE),
@@ -111,7 +110,8 @@ ggplot(mos_pathogen_results,
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 #r statistical test
-chisq.test(table(mos_pathogen_results$siteid, mos_pathogen_results$testResult))
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$testResult))
 ```
 **Chi-square Test**
 Chi-square p-value: 2.2e-16
@@ -121,7 +121,7 @@ Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
 #add a table for mean elevation for neon sites
 mos_pathogen_results %>%
-  group_by(siteid) %>%
+  group_by(siteID) %>%
   summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
   arrange(desc(mean_elev)) %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
@@ -133,12 +133,12 @@ Figure 4. Map of the Pathogen Results across NEON Sites
 usa_map <- map_data("usa")
 #add latitude and longitude data
 points_with_lat_long <- mos_pathogen_results %>%
-  group_by(siteid) %>%
+  group_by(siteID) %>%
   summarise(mean_lat = mean(decimalLatitude),
             mean_long = mean(decimalLongitude))
 #group data by test results and siteID
 count_of_test_results <- mos_pathogen_results %>%
-  group_by(siteid, testResult) %>%
+  group_by(siteID, testResult) %>%
   tally()
 
 #add negative test counts
@@ -187,7 +187,7 @@ mos_pathogen_results %>%
   ylab("Count of Mosquitos")
 
 #r statistical test
-chisq.test(table(mos_pathogen_results$siteid,
+chisq.test(table(mos_pathogen_results$siteID,
                  mos_pathogen_results$scientificname))
 ```
 **Chi-square Test**
@@ -200,10 +200,10 @@ Figure 6. Temperature Across NEON sites for Summer Months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(6, 7, 8)) %>%
-  group_by(siteid) %>%
+  group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
-  kable(col.names = c("Site ID", "Mean Temperature of Summer Months"))
+  kable(col.names = c("Site ID", "Mean Temperature of Summer Months (celsius)"))
 ```
 
 Figure 7. Temperature Across NEON sites for Winter Months
@@ -212,10 +212,10 @@ Figure 7. Temperature Across NEON sites for Winter Months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(12, 1, 2)) %>%
-  group_by(siteid) %>%
+  group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
-  kable(col.names = c("Site ID", "Mean Temperature of Winter Months"))
+  kable(col.names = c("Site ID", "Mean Temperature of Winter Months (celsius)"))
 ```
 
 Figure 1 is a box plot of the elevation across NEON sites. This box plot displays a total of 33 NEON sites along the x-axis, with elevation in meters on a scale from 0 to 2000 meters along the y-axis. The box plot exhibits most of the sites either under or over 1000 meters, with the majority of sites being shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 

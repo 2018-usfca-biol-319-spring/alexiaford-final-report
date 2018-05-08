@@ -184,7 +184,9 @@ aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(6, 7, 8)) %>%
   group_by(siteID) %>%
-  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
+  arrange(desc(mean_temp)) %>%
+  kable(col.names = c("Site ID", "Mean Temperature of Summer Months"))
 ```
 
 Figure 7. Temperature Across NEON sites for Winter Months
@@ -193,7 +195,9 @@ aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(12, 1, 2)) %>%
   group_by(siteID) %>%
-  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE))
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
+  arrange(desc(mean_temp)) %>%
+  kable(col.names = c("Site ID", "Mean Temperature of Winter Months"))
 ```
 
 Figure 1 is a box plot of the elevation across NEON sites. This box plot displays a total of 33 NEON sites along the x-axis, with elevation in meters on a scale from 0 to 2000 meters along the y-axis. The box plot exhibits most of the sites either under or over 1000 meters, with the majority of sites being shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected. 

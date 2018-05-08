@@ -85,7 +85,7 @@ count_mos_all <- count_mos_taxonomist_ID %>%
 #add graph title and axis titles
 ggplot(count_mos_all, aes(y = mean_elev,
                           x = siteID)) +
-  geom_boxplot() + 
+  geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Elevation (m)") +
   ggtitle("Elevation in Meters Across NEON Sites")
@@ -100,14 +100,14 @@ This p-value is highly significant because the p-value is less than 0.001. This 
 
 Figure 2. Bar plot of the Count of Test Results of Mosquitos Across NEON sites
 ```{r barplot-of-count-of-test-results-across-sites}
-# count test results of mosquitos across NEON sites 
+#count test results of mosquitos across NEON sites
 ggplot(mos_pathogen_results,
        aes(x = siteID,
            fill = testResult)) +
   geom_bar() +
   ggtitle("Count of Test Results of Mosquitos Across NEON sites") +
   xlab("Site ID") +
-  ylab("Count of Test Results") + 
+  ylab("Count of Test Results") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 #r statistical test
@@ -161,11 +161,11 @@ ggplot() +
   geom_point(data =  points_with_lat_long,
              aes(x = mean_long,
                  y = mean_lat,
-                 size = neg_tests$n)) + # number of negative
+                 size = neg_tests$n)) +
   geom_point(data =  points_with_lat_long,
              aes(x = mean_long,
                  y = mean_lat,
-                 size = c(8, 0, 0, 4, 62, 0)), # number of positive tests
+                 size = c(8, 0, 0, 4, 62, 0)),
              color = "grey")
 ```
 
@@ -173,7 +173,7 @@ Figure 5. Bar plot for the Test Results of Mosquito Species Across NEON sites
 ```{r barplot-for-test-result-across-NEON-sites}
 # make a barplot for the test Results of mosquito species across NEON sites
 mos_pathogen_results$scientificName <-
-  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
+  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID,
                             split = "\\.", ), `[`, 4),
        mode = "character")
 #add plot title and axis titles

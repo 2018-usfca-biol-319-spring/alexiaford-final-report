@@ -1,5 +1,5 @@
 ---
-title: "Final Project: NEON Mosquito Pathogen Borne Status Data"
+title: "Final Project: NEON Mosquito Pathogen Borne Status Analysis"
 author: "Alexia Ford"
 date: "4/3/2018"
 bibliography: references.bib
@@ -108,6 +108,7 @@ This p-value is highly significant because the p-value is less than 0.001. This 
 
 Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
+#add a table for mean elevation for neon sites
 mos_pathogen_results %>%
   group_by(siteID) %>%
   summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
@@ -117,6 +118,7 @@ mos_pathogen_results %>%
 
 Figure 4. Map of the Pathogen Results across NEON Sites
 ```{r map-of-elevation-pathogen-results-across-sites}
+#map of the elevation of pathogen results across sites
 usa_map <- map_data("usa")
 
 points_with_lat_long <- mos_pathogen_results %>%
@@ -128,12 +130,15 @@ count_of_test_results <- mos_pathogen_results %>%
   group_by(siteID, testResult) %>%
   tally()
 
+#negative test counts
 neg_tests <- count_of_test_results %>%
   filter(testResult == "Negative")
 
+#positive test counts
 pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
+#add title and axis names
 ggplot() +
   ggtitle("Map of Pathogen Test Results Across NEON Sites") +
   geom_polygon(data = usa_map,
@@ -180,6 +185,7 @@ This p-value is highly significant because the p-value is less than 0.001. This 
 
 Figure 6. Temperature Across NEON sites for Summer Months
 ```{r summer-temperature-across-NEON-sites}
+#add a table for temperature across NEON sites for summer months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(6, 7, 8)) %>%
@@ -191,6 +197,7 @@ aggregate_temperature %>%
 
 Figure 7. Temperature Across NEON sites for Winter Months
 ```{r winter-temperature-across-NEON-sites}
+#add a table for temperature across NEON sites for winter months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(12, 1, 2)) %>%

@@ -61,8 +61,12 @@ count_mos_taxonomist_ID <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/",
          "mos_expertTaxonomistIDProcessed.csv"))
-count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
-aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
+count_mos_trapping <- read_csv(
+  paste0("NEON_count-mosquitoes/",
+         "stackedFiles/mos_trapping.csv"))
+aggregate_temperature <- read_csv(
+  paste0("neon_aggregated_temperature_data/",
+         "neon_hourly_temp.csv"))
 ```
 
 Figure 1. Box plot of the Elevation Across NEON sites

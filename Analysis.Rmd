@@ -52,6 +52,7 @@ library("lubridate")
 ```
 
 ```{r read-in-data}
+#read in the data using read_csv
 mos_pathogen_results <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenresults.csv")
 count_mos_taxonomist_ID <- read_csv(
   paste0("NEON_count-mosquitoes/",
@@ -70,10 +71,11 @@ summarized_plots <- count_mos_trapping %>%
             mean_long = mean(decimalLongitude, na.rm = TRUE),
             mean_elev = mean(elevation, na.rm = TRUE),
             nlcdClass = first(nlcdClass))
-
+#join data by plotID
 count_mos_all <- count_mos_taxonomist_ID %>%
   left_join(summarized_plots)
 
+#add graph title and axis titles
 ggplot(count_mos_all, aes(y = mean_elev,
                           x = siteID)) +
   geom_boxplot() + 
@@ -122,25 +124,25 @@ Figure 4. Map of the Pathogen Results across NEON Sites
 ```{r map-of-elevation-pathogen-results-across-sites}
 #map of the elevation of pathogen results across sites
 usa_map <- map_data("usa")
-
+#add latitude and longitude data
 points_with_lat_long <- mos_pathogen_results %>%
   group_by(siteID) %>%
   summarise(mean_lat = mean(decimalLatitude),
             mean_long = mean(decimalLongitude))
-
+#group data by test results and siteID
 count_of_test_results <- mos_pathogen_results %>%
   group_by(siteID, testResult) %>%
   tally()
 
-#negative test counts
+#add negative test counts
 neg_tests <- count_of_test_results %>%
   filter(testResult == "Negative")
 
-#positive test counts
+#add positive test counts
 pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
-#add title and axis names
+#add map title and axis names
 ggplot() +
   ggtitle("Map of Pathogen Test Results Across NEON Sites") +
   geom_polygon(data = usa_map,
@@ -167,7 +169,7 @@ mos_pathogen_results$scientificName <-
   as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
                             split = "\\.", ), `[`, 4),
        mode = "character")
-
+#add plot title and axis titles
 mos_pathogen_results %>%
   filter(!is.na(scientificName)) %>%
   ggplot(aes(fill = scientificName,

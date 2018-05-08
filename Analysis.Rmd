@@ -57,10 +57,10 @@ mos_pathogen_results <- read_csv(
   paste0("NEON_pathogens-mosquito/",
          "stackedFiles/",
         "mos_pathogenresults.csv"))
-count_mos_taxonomist_ID <- read_csv(
+count_mos_taxonomist_id <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/",
-         "mos_expertTaxonomistIDProcessed.csv"))
+         "mos_expertTaxonomistidProcessed.csv"))
 count_mos_trapping <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/mos_trapping.csv"))
@@ -73,13 +73,13 @@ Figure 1. Box plot of the Elevation Across NEON sites
 ```{r combine-datasets}
 # boxplot of the elevation of across NEON sites
 summarized_plots <- count_mos_trapping %>%
-  group_by(plotID) %>%
+  group_by(plotid) %>%
   summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
             mean_long = mean(decimalLongitude, na.rm = TRUE),
             mean_elev = mean(elevation, na.rm = TRUE),
             nlcdClass = first(nlcdClass))
 #join data by plotID
-count_mos_all <- count_mos_taxonomist_ID %>%
+count_mos_all <- count_mos_taxonomist_id %>%
   left_join(summarized_plots)
 
 #add graph title and axis titles
@@ -111,7 +111,7 @@ ggplot(mos_pathogen_results,
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 #r statistical test
-chisq.test(table(mos_pathogen_results$siteID, mos_pathogen_results$testResult))
+chisq.test(table(mos_pathogen_results$siteid, mos_pathogen_results$testResult))
 ```
 **Chi-square Test**
 Chi-square p-value: 2.2e-16
@@ -121,7 +121,7 @@ Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
 #add a table for mean elevation for neon sites
 mos_pathogen_results %>%
-  group_by(siteID) %>%
+  group_by(siteid) %>%
   summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
   arrange(desc(mean_elev)) %>%
   kable(col.names = c("Site ID", "Mean elevation (m)"))
@@ -133,12 +133,12 @@ Figure 4. Map of the Pathogen Results across NEON Sites
 usa_map <- map_data("usa")
 #add latitude and longitude data
 points_with_lat_long <- mos_pathogen_results %>%
-  group_by(siteID) %>%
+  group_by(siteid) %>%
   summarise(mean_lat = mean(decimalLatitude),
             mean_long = mean(decimalLongitude))
 #group data by test results and siteID
 count_of_test_results <- mos_pathogen_results %>%
-  group_by(siteID, testResult) %>%
+  group_by(siteid, testResult) %>%
   tally()
 
 #add negative test counts
@@ -172,14 +172,14 @@ ggplot() +
 Figure 5. Bar plot for the Test Results of Mosquito Species Across NEON sites
 ```{r barplot-for-test-result-across-NEON-sites}
 # make a barplot for the test Results of mosquito species across NEON sites
-mos_pathogen_results$scientificName <-
+mos_pathogen_results$scientificname <-
   as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID,
                             split = "\\.", ), `[`, 4),
        mode = "character")
 #add plot title and axis titles
 mos_pathogen_results %>%
-  filter(!is.na(scientificName)) %>%
-  ggplot(aes(fill = scientificName,
+  filter(!is.na(scientificname)) %>%
+  ggplot(aes(fill = scientificname,
              x = testResult)) +
   geom_bar(position = position_dodge()) +
   ggtitle("Test Results of Mosquito Species Across NEON sites") +
@@ -187,8 +187,8 @@ mos_pathogen_results %>%
   ylab("Count of Mosquitos")
 
 #r statistical test
-chisq.test(table(mos_pathogen_results$siteID,
-                 mos_pathogen_results$scientificName))
+chisq.test(table(mos_pathogen_results$siteid,
+                 mos_pathogen_results$scientificname))
 ```
 **Chi-square Test**
 Chi-square p-value: 2.2e-16
@@ -200,7 +200,7 @@ Figure 6. Temperature Across NEON sites for Summer Months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(6, 7, 8)) %>%
-  group_by(siteID) %>%
+  group_by(siteid) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
   kable(col.names = c("Site ID", "Mean Temperature of Summer Months"))
@@ -212,7 +212,7 @@ Figure 7. Temperature Across NEON sites for Winter Months
 aggregate_temperature %>%
   filter(year == 2017) %>%
   filter(month %in% c(12, 1, 2)) %>%
-  group_by(siteID) %>%
+  group_by(siteid) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
   kable(col.names = c("Site ID", "Mean Temperature of Winter Months"))

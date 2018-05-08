@@ -44,8 +44,7 @@ Results
 =======
 
 ``` r
-# If you add any additional packages here, make sure they are
-# also listed in the DESCRIPTION file
+#load packages
 library("dplyr")
 ```
 
@@ -76,7 +75,11 @@ library("lubridate")
     ##     date
 
 ``` r
-mos_pathogen_results <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_pathogenresults.csv")
+#read in the data using read_csv
+mos_pathogen_results <- read_csv(
+  paste0("NEON_pathogens-mosquito/",
+         "stackedFiles/",
+        "mos_pathogenresults.csv"))
 ```
 
     ## Parsed with column specification:
@@ -95,7 +98,10 @@ mos_pathogen_results <- read_csv("NEON_pathogens-mosquito/stackedFiles/mos_patho
     ## See spec(...) for full column specifications.
 
 ``` r
-count_mos_taxonomist_ID <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expertTaxonomistIDProcessed.csv")
+count_mos_taxonomist_id <- read_csv(
+  paste0("NEON_count-mosquitoes/",
+         "stackedFiles/",
+         "mos_expertTaxonomistIDProcessed.csv"))
 ```
 
     ## Parsed with column specification:
@@ -109,7 +115,9 @@ count_mos_taxonomist_ID <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_expe
     ## See spec(...) for full column specifications.
 
 ``` r
-count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
+count_mos_trapping <- read_csv(
+  paste0("NEON_count-mosquitoes/",
+         "stackedFiles/mos_trapping.csv"))
 ```
 
     ## Parsed with column specification:
@@ -127,7 +135,9 @@ count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.
     ## See spec(...) for full column specifications.
 
 ``` r
-aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
+aggregate_temperature <- read_csv(
+  paste0("neon_aggregated_temperature_data/",
+         "neon_hourly_temp.csv"))
 ```
 
     ## Parsed with column specification:
@@ -156,17 +166,18 @@ summarized_plots <- count_mos_trapping %>%
             mean_long = mean(decimalLongitude, na.rm = TRUE),
             mean_elev = mean(elevation, na.rm = TRUE),
             nlcdClass = first(nlcdClass))
-
-count_mos_all <- count_mos_taxonomist_ID %>%
+#join data by plotID
+count_mos_all <- count_mos_taxonomist_id %>%
   left_join(summarized_plots)
 ```
 
     ## Joining, by = "plotID"
 
 ``` r
+#add graph title and axis titles
 ggplot(count_mos_all, aes(y = mean_elev,
                           x = siteID)) +
-  geom_boxplot() + 
+  geom_boxplot() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Elevation (m)") +
   ggtitle("Elevation in Meters Across NEON Sites")
@@ -197,14 +208,14 @@ anova(lm(elevation ~ siteID,
 Figure 2. Bar plot of the Count of Test Results of Mosquitos Across NEON sites
 
 ``` r
-# count test results of mosquitos across NEON sites 
+#count test results of mosquitos across NEON sites
 ggplot(mos_pathogen_results,
        aes(x = siteID,
            fill = testResult)) +
   geom_bar() +
   ggtitle("Count of Test Results of Mosquitos Across NEON sites") +
   xlab("Site ID") +
-  ylab("Count of Test Results") + 
+  ylab("Count of Test Results") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
@@ -212,7 +223,8 @@ ggplot(mos_pathogen_results,
 
 ``` r
 #r statistical test
-chisq.test(table(mos_pathogen_results$siteID, mos_pathogen_results$testResult))
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$testResult))
 ```
 
     ## Warning in chisq.test(table(mos_pathogen_results$siteID,
@@ -252,25 +264,25 @@ Figure 4. Map of the Pathogen Results across NEON Sites
 ``` r
 #map of the elevation of pathogen results across sites
 usa_map <- map_data("usa")
-
+#add latitude and longitude data
 points_with_lat_long <- mos_pathogen_results %>%
   group_by(siteID) %>%
   summarise(mean_lat = mean(decimalLatitude),
             mean_long = mean(decimalLongitude))
-
+#group data by test results and siteID
 count_of_test_results <- mos_pathogen_results %>%
   group_by(siteID, testResult) %>%
   tally()
 
-#negative test counts
+#add negative test counts
 neg_tests <- count_of_test_results %>%
   filter(testResult == "Negative")
 
-#positive test counts
+#add positive test counts
 pos_tests <- count_of_test_results %>%
   filter(testResult == "Positive")
 
-#add title and axis names
+#add map title and axis names
 ggplot() +
   ggtitle("Map of Pathogen Test Results Across NEON Sites") +
   geom_polygon(data = usa_map,
@@ -282,11 +294,11 @@ ggplot() +
   geom_point(data =  points_with_lat_long,
              aes(x = mean_long,
                  y = mean_lat,
-                 size = neg_tests$n)) + # number of negative
+                 size = neg_tests$n)) +
   geom_point(data =  points_with_lat_long,
              aes(x = mean_long,
                  y = mean_lat,
-                 size = c(8, 0, 0, 4, 62, 0)), # number of positive tests
+                 size = c(8, 0, 0, 4, 62, 0)),
              color = "grey")
 ```
 
@@ -296,14 +308,14 @@ Figure 5. Bar plot for the Test Results of Mosquito Species Across NEON sites
 
 ``` r
 # make a barplot for the test Results of mosquito species across NEON sites
-mos_pathogen_results$scientificName <-
-  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID, 
+mos_pathogen_results$scientificname <-
+  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID,
                             split = "\\.", ), `[`, 4),
        mode = "character")
-
+#add plot title and axis titles
 mos_pathogen_results %>%
-  filter(!is.na(scientificName)) %>%
-  ggplot(aes(fill = scientificName,
+  filter(!is.na(scientificname)) %>%
+  ggplot(aes(fill = scientificname,
              x = testResult)) +
   geom_bar(position = position_dodge()) +
   ggtitle("Test Results of Mosquito Species Across NEON sites") +
@@ -316,17 +328,17 @@ mos_pathogen_results %>%
 ``` r
 #r statistical test
 chisq.test(table(mos_pathogen_results$siteID,
-                 mos_pathogen_results$scientificName))
+                 mos_pathogen_results$scientificname))
 ```
 
     ## Warning in chisq.test(table(mos_pathogen_results$siteID,
-    ## mos_pathogen_results$scientificName)): Chi-squared approximation may be
+    ## mos_pathogen_results$scientificname)): Chi-squared approximation may be
     ## incorrect
 
     ## 
     ##  Pearson's Chi-squared test
     ## 
-    ## data:  table(mos_pathogen_results$siteID, mos_pathogen_results$scientificName)
+    ## data:  table(mos_pathogen_results$siteID, mos_pathogen_results$scientificname)
     ## X-squared = 1837.1, df = 35, p-value < 2.2e-16
 
 **Chi-square Test** Chi-square p-value: 2.2e-16 This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
@@ -341,21 +353,21 @@ aggregate_temperature %>%
   group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
-  kable(col.names = c("Site ID", "Mean Temperature of Summer Months"))
+  kable(col.names = c("Site ID", "Mean Temperature of Summer Months (celsius)"))
 ```
 
-| Site ID |  Mean Temperature of Summer Months|
-|:--------|----------------------------------:|
-| OSBS    |                          28.812749|
-| JERC    |                          28.109570|
-| TALL    |                          26.689572|
-| KONZ    |                          25.974661|
-| WOOD    |                          21.981999|
-| DCFS    |                          21.970814|
-| MLBS    |                          18.425822|
-| RMNP    |                          17.284348|
-| DEJU    |                          15.728156|
-| BARR    |                           6.334127|
+| Site ID |  Mean Temperature of Summer Months (celsius)|
+|:--------|--------------------------------------------:|
+| OSBS    |                                    28.812749|
+| JERC    |                                    28.109570|
+| TALL    |                                    26.689572|
+| KONZ    |                                    25.974661|
+| WOOD    |                                    21.981999|
+| DCFS    |                                    21.970814|
+| MLBS    |                                    18.425822|
+| RMNP    |                                    17.284348|
+| DEJU    |                                    15.728156|
+| BARR    |                                     6.334127|
 
 Figure 7. Temperature Across NEON sites for Winter Months
 
@@ -367,21 +379,21 @@ aggregate_temperature %>%
   group_by(siteID) %>%
   summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
   arrange(desc(mean_temp)) %>%
-  kable(col.names = c("Site ID", "Mean Temperature of Winter Months"))
+  kable(col.names = c("Site ID", "Mean Temperature of Winter Months (celsius)"))
 ```
 
-| Site ID |  Mean Temperature of Winter Months|
-|:--------|----------------------------------:|
-| OSBS    |                          18.190634|
-| JERC    |                          15.413376|
-| TALL    |                          13.232025|
-| KONZ    |                           5.353929|
-| MLBS    |                           2.634917|
-| RMNP    |                          -2.105336|
-| WOOD    |                          -6.329416|
-| DCFS    |                          -7.277177|
-| DEJU    |                         -11.372944|
-| BARR    |                         -13.502004|
+| Site ID |  Mean Temperature of Winter Months (celsius)|
+|:--------|--------------------------------------------:|
+| OSBS    |                                    18.190634|
+| JERC    |                                    15.413376|
+| TALL    |                                    13.232025|
+| KONZ    |                                     5.353929|
+| MLBS    |                                     2.634917|
+| RMNP    |                                    -2.105336|
+| WOOD    |                                    -6.329416|
+| DCFS    |                                    -7.277177|
+| DEJU    |                                   -11.372944|
+| BARR    |                                   -13.502004|
 
 Figure 1 is a box plot of the elevation across NEON sites. This box plot displays a total of 33 NEON sites along the x-axis, with elevation in meters on a scale from 0 to 2000 meters along the y-axis. The box plot exhibits most of the sites either under or over 1000 meters, with the majority of sites being shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected.
 

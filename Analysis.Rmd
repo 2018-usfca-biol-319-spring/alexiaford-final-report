@@ -53,14 +53,14 @@ library("lubridate")
 
 ```{r read-in-data}
 #read in the data using read_csv
-mos_pathogen_results <- read_csv( 
+mos_pathogen_results <- read_csv(
   paste0("NEON_pathogens-mosquito/",
          "stackedFiles/",
         "mos_pathogenresults.csv"))
 count_mos_taxonomist_ID <- read_csv(
   paste0("NEON_count-mosquitoes/",
          "stackedFiles/",
-         "mos_expertTaxonomistIDProcessed.csv"))
+         "mos_expertTaxonomistidProcessed.csv"))
 count_mos_trapping <- read_csv("NEON_count-mosquitoes/stackedFiles/mos_trapping.csv")
 aggregate_temperature <- read_csv("neon_aggregated_temperature_data/neon_hourly_temp.csv")
 ```

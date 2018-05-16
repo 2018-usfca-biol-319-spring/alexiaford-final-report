@@ -37,7 +37,7 @@ The second set used in this report is NEON's mosquito-borne pathogen status data
 The third NEON set used is IR biological temperature. NEON scientists collect IR biological temperature by measuring the parameters of both ambient air and biological temperatures. Ambient temperature is measured at tower sites using single and triple redundant aspirated temperatures sensors. On the other hand, biological temperature, also known as surface temperature is measured using IR (infared) temperature sensors located in the soil array and on the tower infrastructure. These infared temperature sensors offer a non-contact method determining surface temperatures and resolve the radiation emitted by an object through a thermopile used to measure the difference between the target temperature and the sensor body; and secondly a thermistor measures the temperature of the sensor body to reference the target temperature. Biological temperature can be used simultaneously with other collected measurements to analyze additional topics such as plant respiration, evapotranspiration rates, and stomatal conductance. These measurements by NEON have allotted for information on how climate and land changes alter ecosystem respiration, energy balance, and fire risk. 
 
 ## Data Analysis and Statistics
-Using the three data sets collected and provided by NEON this report will use R and R Studio to visualize results and test the effect temperature and geography has on mosquito borne-pathogens. To begin, the mosquito count, mosquito-borne pathogen status, and IR biological temperature NEON data was read into R Studio. R and R Studio were used in conjunction with five packages including ggplot2 and dplyr to analyze the data. ANOVA and chi-square tests were used in R Studio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on Git Hub. 
+Using the three data sets collected and provided by NEON this report will use R and RStudio to visualize results and test the effect temperature and geography has on mosquito borne-pathogens. To begin, the mosquito count, mosquito-borne pathogen status, and IR biological temperature NEON data was read into RStudio. R and RStudio were used in conjunction with five packages including ggplot2 and dplyr to analyze the data. ANOVA and chi-square tests were used in RStudio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on GitHub's website (https://github.com/2018-usfca-biol-319-spring/alexiaford-final-report). 
 
 # Results
 ```{r load-packages}
@@ -94,8 +94,8 @@ anova(lm(elevation ~ siteID,
          data = mos_pathogen_results))
 ```
 **ANOVA Test***
-ANOVA p-value: 2.2e-16 
-This p-value is highly significant because the p-value is less than 0.001. This tells me that the NEON sites do in fact have differing elevations. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this box plot and for this reason we can reject the null hypothesis.
+ANOVA p-value: p < 0.001
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the NEON sites do in fact have differing elevations. Since the p value is so small there is a very low percentage that what we are observing is random in this box plot and for this reason we can reject the null hypothesis.
 
 Figure 2. Bar plot of the Count of Test Results of Mosquitos Across NEON sites
 ```{r barplot-of-count-of-test-results-across-sites}
@@ -114,8 +114,8 @@ chisq.test(table(mos_pathogen_results$siteID,
                  mos_pathogen_results$testResult))
 ```
 **Chi-square Test**
-Chi-square p-value: 2.2e-16
-This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact significant differences in test results among NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
+Chi-square p-value: p < 0.001
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the proportion of different test results differs between sites. Since the p value is so small there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
 Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
@@ -191,8 +191,8 @@ chisq.test(table(mos_pathogen_results$siteID,
                  mos_pathogen_results$scientificname))
 ```
 **Chi-square Test**
-Chi-square p-value: 2.2e-16
-This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
+Chi-square p-value: p < 0.001
+This p-value is highly significant because the p-value is less than 0.001. This tells me that the proportion of different test results differs between sites. Since the p value is so small there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
 
 Figure 6. Temperature Across NEON sites for Summer Months
 ```{r summer-temperature-across-NEON-sites}

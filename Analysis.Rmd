@@ -120,7 +120,7 @@ This p-value is highly significant because the p-value is less than 0.001. This 
 
 Figure 3. Mean Elevation Table for Six of the NEON sites
 ```{r elevation-table}
-# add a table for mean elevation for neon sites 
+# add a table for mean elevation for neon sites
 # using mos pathogen results data set
 mos_pathogen_results %>%
   group_by(siteID) %>%

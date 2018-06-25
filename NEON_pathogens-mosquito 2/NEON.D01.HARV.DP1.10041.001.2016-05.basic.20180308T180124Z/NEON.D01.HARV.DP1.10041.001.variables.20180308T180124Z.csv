@@ -1,0 +1,43 @@
+table,fieldName,description,dataType,units,downloadPkg
+mos_pathogenresults,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+mos_pathogenresults,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+mos_pathogenresults,domainID,"Unique identifier of the NEON domain",string,NA,basic
+mos_pathogenresults,siteID,"NEON site code",string,NA,basic
+mos_pathogenresults,nlcdClass,"National Land Cover Database Vegetation Type Name",string,NA,basic
+mos_pathogenresults,decimalLatitude,"The geographic latitude (in decimal degrees, WGS84) of the geographic center of the reference area",real,decimalDegree,basic
+mos_pathogenresults,decimalLongitude,"The geographic longitude (in decimal degrees, WGS84) of the geographic center of the reference area",real,decimalDegree,basic
+mos_pathogenresults,geodeticDatum,"Model used to measure horizontal position on the earth",string,NA,basic
+mos_pathogenresults,coordinateUncertainty,"The horizontal distance (in meters) from the given decimalLatitude and decimalLongitude describing the smallest circle containing the whole of the Location. Zero is not a valid value for this term",real,meter,basic
+mos_pathogenresults,elevation,"Elevation (in meters) above sea level",real,meter,basic
+mos_pathogenresults,elevationUncertainty,"Uncertainty in elevation values (in meters)",real,meter,basic
+mos_pathogenresults,startCollectDate,"Earliest known collection date for this sample",dateTime,NA,basic
+mos_pathogenresults,endCollectDate,"Latest known collection date for this sample",dateTime,NA,basic
+mos_pathogenresults,receivedDate,"Date a sample was received",dateTime,NA,basic
+mos_pathogenresults,testedDate,"Date test was conducted",dateTime,NA,basic
+mos_pathogenresults,testingVialID,"Identifier for the vial containing specimens for testing (e.g., pathogen testing, chemical analysis, etc.)",string,NA,basic
+mos_pathogenresults,deprecatedVialID,"Identifier on vial label, if different from standard ID",string,NA,basic
+mos_pathogenresults,sampleCondition,"Condition of a sample",string,NA,basic
+mos_pathogenresults,testProtocolVersion,"The protocol version used to test the sample",string,NA,basic
+mos_pathogenresults,testMethod,"Method used to conduct test",string,NA,basic
+mos_pathogenresults,testResult,"Result of the test",string,NA,basic
+mos_pathogenresults,testPathogenName,"The name of the pathogen",string,NA,basic
+mos_pathogenresults,testNumber,"Test number in a sequence of tests",unsigned integer,NA,basic
+mos_pathogenresults,finalResult,"Whether or not this is the conclusive test result for this sample",string,NA,basic
+mos_pathogenresults,locus,"Name of genetic marker sequenced",string,NA,basic
+mos_pathogenresults,percentIdentity,"Percent match between sample and reference sequence",unsigned integer,percent,basic
+mos_pathogenresults,sequenceDatabase,"Name of database where sequence is stored",string,NA,basic
+mos_pathogenresults,sequenceDatabaseID,"Identifier for sample in sequence database",string,NA,basic
+mos_pathogenresults,extractDepleted,"Whether or not sample extract is depleted",string,NA,basic
+mos_pathogenresults,remarks,"Technician notes; free text comments accompanying the record",string,NA,basic
+mos_pathogenresults,testedBy,"An identifier for the technician who tested the sample",string,NA,basic
+mos_pathogenresults,laboratoryName,"Name of the laboratory or facility that is processing the sample",string,NA,basic
+mos_pathogenpooling,uid,"Unique ID within NEON database; an identifier for the record",string,NA,basic
+mos_pathogenpooling,namedLocation,"Name of the measurement location in the NEON database",string,NA,basic
+mos_pathogenpooling,domainID,"Unique identifier of the NEON domain",string,NA,basic
+mos_pathogenpooling,siteID,"NEON site code",string,NA,basic
+mos_pathogenpooling,startCollectDate,"Earliest known collection date for this sample",dateTime,NA,basic
+mos_pathogenpooling,endCollectDate,"Latest known collection date for this sample",dateTime,NA,basic
+mos_pathogenpooling,testingID,"Identifier for the group of specimens for testing",string,NA,basic
+mos_pathogenpooling,testingVialID,"Identifier for the vial containing specimens for testing (e.g., pathogen testing, chemical analysis, etc.)",string,NA,basic
+mos_pathogenpooling,poolSize,"Number of individuals in the pathogen testing pool",unsigned integer,number,basic
+mos_pathogenpooling,dataQF,"Data quality flag",string,NA,basic

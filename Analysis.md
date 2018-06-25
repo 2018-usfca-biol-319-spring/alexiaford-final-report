@@ -1,0 +1,462 @@
+Final Project: NEON Mosquito Pathogen Borne Status Analysis
+================
+Alexia Ford
+4/3/2018
+
+Introduction
+============
+
+This report is testing the effect temperature and geography has on mosquito borne-pathogens by taking a closer look at multiple variables collected and publicly presented by NEON. These variables include: mosquito count, elevation, IR biological temperature, mosquito pathogen statuses, NEON sites, and mosquito species. This report will explain NEON's work/purpose, NEON's design, test a hypothesis, and lastly analyze the results. The National Ecological Observatory Network is an observation platform for discovering, understanding, and forecasting the impacts of climate change, land use change, and invasive species on continental-scale ecology with sites distributed within 20 eco-climatic domains across United States, Alaska, Hawaii, and Puerto Rico using remote sensing technologies (Kampe et al. 2010). NEON has allowed for easy accessible data to the public by providing the data the observatory has collected to scientists, land managers, policy makers, educators, and members of the general public interested in addressing these major ecological challenges. Doing so has increased societal interest on ecological problems and has allowed for investigators and disciplines that can quickly bring relevant data to bear on complex environmental problems that will set the agenda and drive progress (Hampton et al. 2013).The data produced by NEON are strategically aimed at addressing ecological questions. Questions that are analyzing complex ecological processes and relationships that govern large scale patterns consistent with the measuring the drivers of change, biogeochemical cycling, and population and community responses across a variety of ecosystems in the ultimate hopes of expanding our understanding of ecological processes and to improve our ability to forecast these ecological changes (Thorpe et al. 2016).
+
+The NEON project is responsible for measuring the causes and effects of environmental change across the United States within varying domains that represent different landforms, vegetation, climate, and ecosystem dynamics. The project is constantly collecting data to provide and statistically represent ecological, physical, and biological variability across the US. NEON has four different site types that the observatory collects data from, these sites include: core terrestrial sites, core aquatic sites, relocatable terrestrial sites, and lastly relocatable aquatic sites. The sites are collected using five measurement subsystems of the Observatory including: the Airborne Observation Platform (AOP), Aquatic Instrument System (AIS), Aquatic Observation System (AOS), Terrestrial Instrument System (TIS), and Terrestrial Observation System (TOS) (Thorpe et al. 2016). These five systems of measurement have been used to collect endless data and NEON has continued to do so by properly standardizing protocols across all sites and maintaining community best practices.
+
+While NEON collects a wide range of data from atmospheric to even ecohydrolic this report will specifically be looking at NEON's collection of mosquito count/pathogen data, georgraphical roles, and IR biological temperature data. The National Ecological Observatory Network (NEON) monitors mosquito populations across its broad geographical range of sites because of their prevalence in food webs, sensitivity to abiotic factors, and relevance for human health. Mosquitoes (sentinel taxa) are helpful organisms to use in study because they are a diverse family of insects with varying life spans and generation times with wide geographic distributions that allow for comparisons across the continent as well as across major vegetation types. Mosquitoes are of great importance to human health due to their epidemiological significance with associated diseases and their ecological influence of crops and healthy livestock. Mosquitoes are also ideal for evaluating the ecological effects of global change as mosquitoes are influenced by climate, vegetation, and host availability. Mosquitoes generally respond quickly to environmental change. Mosquitoes are highly mobile and move to new areas depending on climatic conditions. For, example, as climate warms some mosquitoes are expanding their geographical ranges and efficiency of transmission, resulting in mosquitoes having more interactions with humans (Hoekman et al. 2016). With this discovery this project will test and analyze the expansion of geographical ranges and efficiency of transmission as climates warm, and as a result will further examine mosquito interactions with humans. I would like to examine mosquito interactions by using NEON's IR biological temperature and mosquito-borne pathogen status data sets. I would like to test the hypothesis that as temperature increases mosquito-borne pathogen status also increases. In addition to analyzing the effect temperature has on mosquitos I would also like to research the geographical effect on mosquito-borne pathogen statuses, such as mosquito migration to rivers and the abundance of mosquitos found near bodies of water as human abundance is also typically higher near water and lower elevations. It has been documented that the creation of large reservoirs by damming rivers, as well as micro dams, are well documented to be associated with increased malaria transmission (Norris 2004). I will research the effect of geography on pathogens by analyzing the sites that have high mosquito abundance/pathogen status to test the hypothesis that the NEON sites near water or lower elevation will have a higher mosquito-borne pathogen statuses.
+
+Methods
+=======
+
+Site Locations and Descriptions
+-------------------------------
+
+The "STER" and "JERC" NEON sites were chosen after making a bar plot of the count of test results of mosquitos across NEON sites (Figure 2). "STER" displayed the most amount positive test results and "JERC" overall displayed the least amount of overall test results amongst all the NEON sites.
+
+"STER" is short for NEON's North Sterling site. "STER" is a relocatable terrestrial site located in the central plains of Colorado just outside of Sterling in Northeastern Colorado. This plain is characterized by flat terrain and represents an agronomic site within an urban area. "STER" is at the edge of an experimental field used for the long-term sustainable Dryland Agroecosystems Project (DAP) initiated in 1985 at three NEON eastern Colorado sites to study the effects of cropping intensity on production, water use efficiency, and soil chemical and physical properties. The "STER" vegetation consisted of the no-till cropping systems before establishment. By 1910 the site was under conventional tillage since it was taken from native sod. From 1910 to 1985 the conventional tillage ranged from moldboard plowing in the early years to sweep tillage in the later years. The primary crop was winter wheat grown in a wheat-fallow rotation with occasional growth of proso millet before 1985. In 1986 grass stands were established that contain a mixture of perennial species including both warm and cool season grasses. The climate of this site consists of hot and low humidity summers and winters typically around freezing point but can possibly drop lower. "STER" faces occasional hailstorms and thunderstorms during the growing seasons, as well as seasonal high winds and tornadoes in North Sterling. The site provides an understanding of the effects of both climate change and chemical climate to understand and contrast ecological process with other and within cross-domain analyses. A standard selection of data is collected from this site however data from this location provides a baseline for evaluating changes due to invasive species and infectious disease along both a rural and urban gradient in time or space. Overall, Colorado's national average population is growing 3 times the national average with the population expected to surpass 5.7 million by 2030.
+
+"JERC" the Jones Ecological Research Center NEON site is a relocatable terrestrial site in Southeast Georgia. This site is located in the Joseph Jone Ecological Research Center a 11,000- hectare reserve located within the Lower Coastal Plains and Flatwoods areas in southern Georgia. The site has been managed with low intensity, dormant-season prescribed fires for the past 75 years for every 3-4 years. "JERC" primary vegetation consist of a mix of Longlear Pine, various oaks, and wire grass, in addition to a numerous amount of other perennial grasses and forbs.
+
+Field Sampling Design
+---------------------
+
+Mosquitoes sampled from CO2 traps, IR biological temperature, and mosquito-borne pathogen status are the three data sets used in this report collected and publicly presented by NEON's scientists in order to test the effect temperature and geography has on mosquito borne-pathogens.
+
+The first data set used in this report is NEON's count mosquito data sampled from CO2 traps. The mosquito NEON data comes from a wide range of NEON sites with varying domains. The sampling design for NEON mosquito count data is continuous across all sites to ensure data is consistent and comparable across time and space. The sampling methods include sampling mosquitoes at NEON sites using CDC CO2 light traps. All traps use CO2 as bait because CO2 attracts mosquitoes as it is a component of vertebrate breath that mosquitoes use to locate hosts. Once the mosquito is attracted to the trap a fan pulls the mosquitoes into a net bag for live storage until the trap is collected by a field technician. The design of the CDC CO2 light trap has remained intact since 1962, maintaining it's efficiency and effectiveness in use as the design has allowed for the removal of additional "trash" insects not swaying or adding to collection of data in anyway (McNELLY 1989).
+
+The second set used in this report is NEON's mosquito-borne pathogen status data. NEON scientists collect the mosquitos as they do in the count mosquito set using CDC CO2 light traps sampled in the field. After field collection, mosquito samples are sent to an external facility in which they are sorted to remove bycatch and taxonomically identified to species and sex (if possible). Once the trap is collected by a technician minimal processing occurs at the domain lab. The mosquitoes are frozen, transferred and stored in dry sample vials at -80°C to be sent for identification and pathogen testing at a facility. Mosquitoes are identified at external facilities in order to minimize identification errors and accurately identify mosquitoes to species. Identification is based on visual examination of external morphology. Identifications for a subset of difficult taxa are verified by DNA bar coding. After identification, target species are destructively tested for pathogens. Mosquito-borne pathogen sampling involves the testing of all or a subset of collected mosquitoes for infection by viral pathogens at one or more external facilities.
+
+The third NEON set used is IR biological temperature. NEON scientists collect IR biological temperature by measuring the parameters of both ambient air and biological temperatures. Ambient temperature is measured at tower sites using single and triple redundant aspirated temperatures sensors. On the other hand, biological temperature, also known as surface temperature is measured using IR (infared) temperature sensors located in the soil array and on the tower infrastructure. These infared temperature sensors offer a non-contact method determining surface temperatures and resolve the radiation emitted by an object through a thermopile used to measure the difference between the target temperature and the sensor body; and secondly a thermistor measures the temperature of the sensor body to reference the target temperature. Biological temperature can be used simultaneously with other collected measurements to analyze additional topics such as plant respiration, evapotranspiration rates, and stomatal conductance. These measurements by NEON have allotted for information on how climate and land changes alter ecosystem respiration, energy balance, and fire risk.
+
+Data Analysis and Statistics
+----------------------------
+
+Using the three data sets collected and provided by NEON this report will use R and R Studio to visualize results and test the effect temperature and geography has on mosquito borne-pathogens. To begin, the mosquito count, mosquito-borne pathogen status, and IR biological temperature NEON data was read into R Studio. R and R Studio were used in conjunction with five packages including ggplot2 and dplyr to analyze the data. ANOVA and chi-square tests were used in R Studio for plots made to test for the significance of the results found. The data, code, and other files needed to reproduce the analyses are available on Git Hub.
+
+Results
+=======
+
+``` r
+#load packages
+library("dplyr")
+```
+
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
+
+``` r
+library("tidyr")
+library("ggplot2")
+library("readr")
+library("knitr")
+library("lubridate")
+```
+
+    ## 
+    ## Attaching package: 'lubridate'
+
+    ## The following object is masked from 'package:base':
+    ## 
+    ##     date
+
+``` r
+#read in the data using read_csv
+mos_pathogen_results <- read_csv(
+  paste0("NEON_pathogens-mosquito/",
+         "stackedFiles/",
+        "mos_pathogenresults.csv"))
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   .default = col_character(),
+    ##   decimalLatitude = col_double(),
+    ##   decimalLongitude = col_double(),
+    ##   elevation = col_double(),
+    ##   startCollectDate = col_datetime(format = ""),
+    ##   endCollectDate = col_datetime(format = ""),
+    ##   receivedDate = col_datetime(format = ""),
+    ##   testedDate = col_datetime(format = ""),
+    ##   testNumber = col_integer()
+    ## )
+
+    ## See spec(...) for full column specifications.
+
+``` r
+count_mos_taxonomist_id <- read_csv(
+  paste0("NEON_count-mosquitoes/",
+         "stackedFiles/",
+         "mos_expertTaxonomistIDProcessed.csv"))
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   .default = col_character(),
+    ##   setDate = col_datetime(format = ""),
+    ##   collectDate = col_datetime(format = ""),
+    ##   identifiedDate = col_date(format = ""),
+    ##   individualCount = col_integer()
+    ## )
+    ## See spec(...) for full column specifications.
+
+``` r
+count_mos_trapping <- read_csv(
+  paste0("NEON_count-mosquitoes/",
+         "stackedFiles/mos_trapping.csv"))
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   .default = col_character(),
+    ##   decimalLatitude = col_double(),
+    ##   decimalLongitude = col_double(),
+    ##   coordinateUncertainty = col_double(),
+    ##   elevation = col_double(),
+    ##   elevationUncertainty = col_double(),
+    ##   setDate = col_datetime(format = ""),
+    ##   collectDate = col_datetime(format = ""),
+    ##   trapHours = col_double()
+    ## )
+    ## See spec(...) for full column specifications.
+
+``` r
+aggregate_temperature <- read_csv(
+  paste0("neon_aggregated_temperature_data/",
+         "neon_hourly_temp.csv"))
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   domainID = col_character(),
+    ##   siteID = col_character(),
+    ##   year = col_integer(),
+    ##   month = col_integer(),
+    ##   day = col_integer(),
+    ##   hour = col_integer(),
+    ##   bioTempMean = col_double(),
+    ##   bioTempMinimum = col_double(),
+    ##   bioTempMaximum = col_double(),
+    ##   bioTempVariance = col_double(),
+    ##   bioTempNumPts = col_double(),
+    ##   bioTempExpUncert = col_double()
+    ## )
+
+Figure 1. Box plot of the Elevation Across NEON sites
+
+``` r
+# boxplot of the elevation of across NEON sites
+summarized_plots <- count_mos_trapping %>%
+  group_by(plotID) %>%
+  summarise(mean_lat = mean(decimalLatitude, na.rm = TRUE),
+            mean_long = mean(decimalLongitude, na.rm = TRUE),
+            mean_elev = mean(elevation, na.rm = TRUE),
+            nlcdClass = first(nlcdClass))
+#join data by plotID
+count_mos_all <- count_mos_taxonomist_id %>%
+  left_join(summarized_plots)
+```
+
+    ## Joining, by = "plotID"
+
+``` r
+#add graph title and axis titles
+ggplot(count_mos_all, aes(y = mean_elev,
+                          x = siteID)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Elevation (m)") +
+  ggtitle("Elevation in Meters Across NEON Sites")
+```
+
+![](Analysis_files/figure-markdown_github/combine-datasets-1.png)
+
+``` r
+#r statistical test
+anova(lm(elevation ~ siteID,
+         data = mos_pathogen_results))
+```
+
+    ## Warning in anova.lm(lm(elevation ~ siteID, data = mos_pathogen_results)):
+    ## ANOVA F-tests on an essentially perfect fit are unreliable
+
+    ## Analysis of Variance Table
+    ## 
+    ## Response: elevation
+    ##            Df    Sum Sq  Mean Sq    F value    Pr(>F)    
+    ## siteID      5 497899654 99579931 3.1099e+29 < 2.2e-16 ***
+    ## Residuals 927         0        0                         
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+**ANOVA Test**\* ANOVA p-value: 2.2e-16 This p-value is highly significant because the p-value is less than 0.001. This tells me that the NEON sites do in fact have differing elevations. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this box plot and for this reason we can reject the null hypothesis.
+
+Figure 2. Bar plot of the Count of Test Results of Mosquitos Across NEON sites
+
+``` r
+#count test results of mosquitos across NEON sites
+ggplot(mos_pathogen_results,
+       aes(x = siteID,
+           fill = testResult)) +
+  geom_bar() +
+  ggtitle("Count of Test Results of Mosquitos Across NEON sites") +
+  xlab("Site ID") +
+  ylab("Count of Test Results") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+![](Analysis_files/figure-markdown_github/barplot-of-count-of-test-results-across-sites-1.png)
+
+``` r
+#r statistical test
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$testResult))
+```
+
+    ## Warning in chisq.test(table(mos_pathogen_results$siteID,
+    ## mos_pathogen_results$testResult)): Chi-squared approximation may be
+    ## incorrect
+
+    ## 
+    ##  Pearson's Chi-squared test
+    ## 
+    ## data:  table(mos_pathogen_results$siteID, mos_pathogen_results$testResult)
+    ## X-squared = 218.33, df = 10, p-value < 2.2e-16
+
+**Chi-square Test** Chi-square p-value: 2.2e-16 This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact significant differences in test results among NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
+
+Figure 3. Mean Elevation Table for Six of the NEON sites
+
+``` r
+#add a table for mean elevation for neon sites
+mos_pathogen_results %>%
+  group_by(siteID) %>%
+  summarize(mean_elev = mean(elevation, na.rm = TRUE)) %>%
+  arrange(desc(mean_elev)) %>%
+  kable(col.names = c("Site ID", "Mean elevation (m)"))
+```
+
+| Site ID |  Mean elevation (m)|
+|:--------|-------------------:|
+| ONAQ    |              1656.0|
+| CPER    |              1654.0|
+| STER    |              1364.0|
+| TALL    |               166.9|
+| JERC    |                47.0|
+| OSBS    |                46.0|
+
+Figure 4. Map of the Pathogen Results across NEON Sites
+
+``` r
+#map of the elevation of pathogen results across sites
+usa_map <- map_data("usa")
+#add latitude and longitude data
+points_with_lat_long <- mos_pathogen_results %>%
+  group_by(siteID) %>%
+  summarise(mean_lat = mean(decimalLatitude),
+            mean_long = mean(decimalLongitude))
+#group data by test results and siteID
+count_of_test_results <- mos_pathogen_results %>%
+  group_by(siteID, testResult) %>%
+  tally()
+
+#add negative test counts
+neg_tests <- count_of_test_results %>%
+  filter(testResult == "Negative")
+
+#add positive test counts
+pos_tests <- count_of_test_results %>%
+  filter(testResult == "Positive")
+
+#add map title and axis names
+ggplot() +
+  ggtitle("Map of Pathogen Test Results Across NEON Sites") +
+  geom_polygon(data = usa_map,
+               aes(x = long,
+                   y = lat,
+                   group = group),
+               fill = "light blue") +
+  coord_fixed(1.3) +
+  geom_point(data =  points_with_lat_long,
+             aes(x = mean_long,
+                 y = mean_lat,
+                 size = neg_tests$n)) +
+  geom_point(data =  points_with_lat_long,
+             aes(x = mean_long,
+                 y = mean_lat,
+                 size = c(8, 0, 0, 4, 62, 0)),
+             color = "grey")
+```
+
+![](Analysis_files/figure-markdown_github/map-of-elevation-pathogen-results-across-sites-1.png)
+
+Figure 5. Bar plot for the Test Results of Mosquito Species Across NEON sites
+
+``` r
+# make a barplot for the test Results of mosquito species across NEON sites
+mos_pathogen_results$scientificname <-
+  as.vector(lapply(strsplit(mos_pathogen_results$deprecatedVialID,
+                            split = "\\.", ), `[`, 4),
+       mode = "character")
+#add plot title and axis titles
+mos_pathogen_results %>%
+  filter(!is.na(scientificname)) %>%
+  ggplot(aes(fill = scientificname,
+             x = testResult)) +
+  geom_bar(position = position_dodge()) +
+  ggtitle("Test Results of Mosquito Species Across NEON sites") +
+  xlab("Test Result") +
+  ylab("Count of Mosquitos")
+```
+
+![](Analysis_files/figure-markdown_github/barplot-for-test-result-across-NEON-sites-1.png)
+
+``` r
+#r statistical test
+chisq.test(table(mos_pathogen_results$siteID,
+                 mos_pathogen_results$scientificname))
+```
+
+    ## Warning in chisq.test(table(mos_pathogen_results$siteID,
+    ## mos_pathogen_results$scientificname)): Chi-squared approximation may be
+    ## incorrect
+
+    ## 
+    ##  Pearson's Chi-squared test
+    ## 
+    ## data:  table(mos_pathogen_results$siteID, mos_pathogen_results$scientificname)
+    ## X-squared = 1837.1, df = 35, p-value < 2.2e-16
+
+**Chi-square Test** Chi-square p-value: 2.2e-16 This p-value is highly significant because the p-value is less than 0.001. This tells me that the there are in fact different species among the different NEON sites. Since the p value is so small (2.2e-16) there is a very low percentage that what we are observing is random in this bar plot and for this reason we can reject the null hypothesis.
+
+Figure 6. Temperature Across NEON sites for Summer Months
+
+``` r
+#add a table for temperature across NEON sites for summer months
+aggregate_temperature %>%
+  filter(year == 2017) %>%
+  filter(month %in% c(6, 7, 8)) %>%
+  group_by(siteID) %>%
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
+  arrange(desc(mean_temp)) %>%
+  kable(col.names = c("Site ID", "Mean Temperature of Summer Months (celsius)"))
+```
+
+| Site ID |  Mean Temperature of Summer Months (celsius)|
+|:--------|--------------------------------------------:|
+| OSBS    |                                    28.812749|
+| JERC    |                                    28.109570|
+| TALL    |                                    26.689572|
+| KONZ    |                                    25.974661|
+| WOOD    |                                    21.981999|
+| DCFS    |                                    21.970814|
+| MLBS    |                                    18.425822|
+| RMNP    |                                    17.284348|
+| DEJU    |                                    15.728156|
+| BARR    |                                     6.334127|
+
+Figure 7. Temperature Across NEON sites for Winter Months
+
+``` r
+#add a table for temperature across NEON sites for winter months
+aggregate_temperature %>%
+  filter(year == 2017) %>%
+  filter(month %in% c(12, 1, 2)) %>%
+  group_by(siteID) %>%
+  summarize(mean_temp = mean(bioTempMaximum, na.rm = TRUE)) %>%
+  arrange(desc(mean_temp)) %>%
+  kable(col.names = c("Site ID", "Mean Temperature of Winter Months (celsius)"))
+```
+
+| Site ID |  Mean Temperature of Winter Months (celsius)|
+|:--------|--------------------------------------------:|
+| OSBS    |                                    18.190634|
+| JERC    |                                    15.413376|
+| TALL    |                                    13.232025|
+| KONZ    |                                     5.353929|
+| MLBS    |                                     2.634917|
+| RMNP    |                                    -2.105336|
+| WOOD    |                                    -6.329416|
+| DCFS    |                                    -7.277177|
+| DEJU    |                                   -11.372944|
+| BARR    |                                   -13.502004|
+
+Figure 1 is a box plot of the elevation across NEON sites. This box plot displays a total of 33 NEON sites along the x-axis, with elevation in meters on a scale from 0 to 2000 meters along the y-axis. The box plot exhibits most of the sites either under or over 1000 meters, with the majority of sites being shown under 1000 meters. There are only a total of six sites over 1000 meters including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". An ANOVA test was performed for Figure 1, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected.
+
+Figure 2 is a bar plot of the count of test results of mosquitos across NEON sites. Count of test results are along the y-axis on a scale from 0 to 400 mosquitos, with the test results shown in red, green, and blue. Red is an inconclusive test result, green is a negative test result, and blue is a positive test result. Site ID is shown on the x-axis. A total of six NEON sites are shown including: "CPER", "JERC", "ONAQ","OSBS","STER", and "TALL". The "CPER" site exhibits about 225 total count of mosquitos, most of which are negative with only about 10 or so positive test results. The "JERC" site displays about 30 total counts of mosquitos, most being negative and only a sliver being inconclusive. The "ONAQ" site has the least amount of counts of mosquitos, only about 10 total, all of which are negative. The fourth site, "OSBS" presents the most amount of test results of all the sites with about a 375 total mosquito count, and is the only site with all three test results. The predominant test result for this site is negative with about 5 positive tests and about 15 inconclusive tests. Next, the "STER" site reveals a total of about 190 mosquitos. This site displays the most amount of positive test results than any other site with about 1/3 of the total test results being positive and 2/3 of the total test results being negative. Lastly, the "TALL" site exhibits about 100 total mosquito counts of test results, most being negative and only a couple being inconclusive. A chi-square test was performed for Figure 2, with a p-value of 2.2e-16. This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected.
+
+Figure 3 is a mean elevation table using the mosquito pathogen results from NEON for six of the NEON sites. The table's x-values are site ID including the "ONAQ","CPER", "STER", "TALL", "JERC", and "OSBS" sites. The y-value's are the mean elevation in meters of each of the six NEON sites. The "ONAQ" site's mean elevation is 1656 meters, the "CPER" site's mean elevation is 1654 meters, the "STER" site's mean elevation is 1364 meters, the "TALL" site's mean elevation is 166.9 meters, the "JERC" site's mean elevation is 47 meters, and lastly the "OSBS" site's mean elevation is 46 meters. This table exhibits that half sites mean elevations are high, ranging from 1000 to 2000 meters, while the other half of the mean elevations are low, ranging from 40 to 200 meters.
+
+Figure 4 is a United States map of the pathogen test results across NEON sites. Along the y-axis are latitude values and along the x-axis are longitude values. The black dots displayed demonstrate negative mosquito test results for pathogen-borne statuses while the grey dots demonstrate positive mosquito test results for pathogen borne-statuses. In this figure both positive and negative tests are shown to have taken place in the same general area. The map exhibits overall more negative test results than there are positive test results.
+
+Figure 5 is a bar plot for the test results of mosquito species across NEON sites. The y-axis is the count of mosquitos tested on a scale from 0 to about 200. Along the x-axis is the three possible test results including: inconclusive, negative, and positive. The bars that are in the figure are color coded by scientific name seen in the legend. There are a total of eight different colors and therefore eight different mosquito scientific names that have been tested. The inconclusive test results is the smallest of the two other test results with a total of four different species seen tested and a count of mosquitos ranging from 0 to 25 for all four species. The negative test result data exhibits both the largest amount of counted mosquitos and the most amount of species present. The negative test results display data for all eight species of mosquitos and the counts of mosquitos for these eight species range from 25 to about 275. Lastly, the third test result, positive, reveals the least amount of species tested, as there are only three scientific names seen including: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded for these three species. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65, revealing the most amount of positive counts overall. A chi-square test was performed for Figure 5, with a p-value of 2.2e-16.This p-value is highly significant because the p-value is less than 0.001 and for this reason the null hypothesis can be rejected.
+
+Figure 6 indicates the average summer temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the summer months of June, July, and August. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from 6.33 (being the lowest at the "BARR" site) to 28.8 (being the highest temperature at the "OSBS" site).
+
+Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site).
+
+Discussion
+==========
+
+To begin, this report will broadly introduce the varying elevations across NEON sites, to obtain an understanding of geography in relation to mosquito-borne pathogen status. Figure 1 introduces the elevations across NEON sites, displaying a majority of sites below 1000 meters while six total sites are above 1000 meters, including: "CPER", "JORN", "MOAB", "ONAQ", "SRER", and "STER". While examining Figure 2, the count of test results of mosquitos across NEON sites, it is found that three of the six sites tested for mosquitos also had an elevation above 1000 meters, these sites are: "CPER", "ONAQ", and "STER". These three sites are all located in Colorado and have elevations ranging from 1364 to 1656 meters, seen in Figure 3, while the other three sites, "TALL", "JERC", and "OSBS", in Figure 3 are under 200 meters. Additionally, Figure 2, exhibits that these two sites of higher elevation, "CPER" and "STER" have positive test results while "ONAQ" is the only high elevation site that has no positive test results. This is surprising as studies have shown that lower elevation sites are much more likely to have outbreaks of mosquito pathogens. For example, outbreaks of *A. albopictus* in Hawaii in 2001 among native Hawaiian birds have had serious consequences for conservation of endemic avian species, particularly at low elevations (Juliano and Philip Lounibos 2005). Additionally, there have been further studies done in Colorado explaining that lower elevations are more likely to have higher mosquito abundance. A study done at the Northern Colorado Front Range, with a similar elevation range of 1500–2400 meters shows that species richness was highest in plains habitats at elevations below 1600 meters. Numerous mosquito species were found exclusively or predominantly at low elevations below 1700 meters (Eisen et al. 2008). This aligns with the results seen as these sites are of much lower elevation relatively in Colorado as some Colorado elevation sites reach above 2000 meters. Such as the "STER" site, seen in Figure 2 with the most amount of positive test results. The site is a relocatable terrestrial site located in the central plains of Colorado just outside of Sterling in Northeastern Colorado, characterized by flat terrain and represents an agronomic site within an urban area. While this site may be of relatively high elevation compared to the other sites the attraction to flat terrain is typically characteristic of mosquitos (Nellemann and Cameron 1996). Additionally, "STER" is known for humid summers, and relatedly humidity is notorious for higher mosquito abundance (Buckner et al. 2011). On the other hand, "TALL", "JERC", and "OSBS" are the only sites with elevations under 200 meters and only "OSBS" presents positive test results. This however is not surprising as the "OSBS" site is located in Southeast Florida, a core terrestrial site with the lowest elevation at about 46 meters that is surrounded by multiple lakes and has known high rates of mosquito abundance as a lot of pesticide usage has been noted in order to diminish mosquito abundance in Florida (Miles and Pfeuffer 1997). Studies done for terrestrial and marine biota show that mosquito transmission is the lowest at high elevations where mosquitoes are limited by cool temperatures and transmission of malaria and pox, therefore varying from endemic transmission in warm, low-elevation terrestrial sites to irregular outbreaks at mid-elevation terrestrial sites (Harvell et al. 2002). A study in the mountainous area of Wyoming show that the location of *Aedes nigromaculis* is dependent on both human abundance and river location. Locations populated with greater human abundance allows for the ample feeding of *Aedes nigromaculis* while on the other hand, being near a river is a preferable habit for the species (WYOMING 1996). Figure 4, is a United States map of pathogen test results performed by NEON illustrating that while the the sites seen in these Figures show higher abundance of positive test results in higher elevation Figure 4 displays that the majority of the data collected takes place in Colorado and Florida therefore making it difficult to differentiate if lower elevation sites or sites near water have increased mosquito-borne pathogen status, since collection is only shown at NEON's Colorado and Florida sites and the test results are almost equal in terms of negative test results (black) and positive test results (grey). With this being said the hypothesis posed: the sites near water/with lower elevations will have an increase in mosquito-borne pathogen status cannot be confirmed nor rejected fully due to lack of NEON data collected by NEON for this particular subject matter.
+
+Next this report will survery species in relation to test results instead of elevation. Figure 5, exhibits tests results of mosquito species across NEON sites. The legend in Figure 5 exhibits a total of eight color coded scientific names. All eight names are found in the negative test results with varying counts of mosquito for each species. In the inconclusive test results column there are a total of four species, and most interestingly for the positive test results there is the least amount of species with three visible. The three species seen with positive test results include: *Aedes dorsalis*, *Coquillettidia perturbans*, and *Culex tarsalis* ranging from 0 to about 65 counts of mosquitos recorded. *Aedes dorsalis* count for positive test results is about 5. *Coquillettidia perturbans* count for positive test results is about 10. And lastly, the count for positive test results for *Culex tarsalis* is about 65, revealing the most amount of positive counts overall. With this an interesting theme arose while researching studies that temperature seems to be a pattern in the *Culex tarsalis* species. A study shows that host-seeking patterns in *Culex tarsalis* species indicated that passeriform birds (64%) and rabbits (25%) were the most frequent bloodmeal hosts and that the percentage of females feeding on birds varied temporally as an inverse function of mosquito abundance (Lothrop and Reisen 2001). Not only has it been studied that host-seeking patterns are prominent in *Culex tarsalis* species, its found that mating patterns are also temporally dependent as location and selection of an oviposition site is an essential part of the life history of all mosquito species (Bentley and Day 1989).
+
+The examination of these temporally dependent patterns in relation to site, species, elevation, etc is seen in Figures 6 and 7. Figure 6 indicates the average summer temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the summer months of June, July, and August. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from 6.33 (being the lowest at the "BARR" site) to 28.8 (being the highest temperature at the "OSBS" site). Figure 7 indicates the average winter temperatures across NEON sites using NEON's IR biological temperature data set. The averages for each site were just for the winter months of December, January, and February. There are a total of 10 NEON sites with recorded temperatures. The temperature for the 10 sites ranged from -13.5 (being the lowest at the "BARR" site) to 18.2 (being the highest temperature at the "OSBS" site). For both summer and winter averages the "JERC" site was the second highest temperature right below the "OSBS" site with an average summer temperature of 28.1 and an average winter temperature of 15.4. Interestingly so, "JERC" is shown in Figure 1 as one of the lower elevation sites below 250 meters. "JERC" the Jones Ecological Research Center NEON site is a relocatable terrestrial site in Southeast Georgia. This site is located in the Joseph Jone Ecological Research Center a 11,000-hectare reserve located within the Lower Costal Plains and Flatwoods areas in southern Georgia. The site has endless information on both climate change and pathogen-borne status in mosquitos. A study performed in Georgia shows a positive correlation between *Ae. vexans* daily abundance and average temperature on collection day is potentially a reflection of warm temperatures encouraging host‐seeking and the Asian tiger mosquito, *Ae. albopictus*, is susceptible to body fluid loss at low relative humidity, which may explain the importance of average relative humidity in modeling the daily presence/absence of this species (Buckner et al. 2011). Other species such as the *Anopheline spp.* and *Aedes aegypti* have established temperature thresholds for survival, and there are temperature-dependent incubation periods for the parasites and viruses within them (Gill and others 1921). Besides temperature and geography, the food availability and quality in the agricultural wetlands in the coastal plain of Georgia are also important factors that influence mosquito oviposition, larval survival, and adult production (Young et al. 2014). Without much deliberation the Georgia "JERC" site shows a high abundance of mosquitos, low elevation, and higher temperatures in both summer and winter. Where as the "BARR" site a relocatable terrestrial site in the tundras of Alaska exhibit the lowest temperatures in Figure 6 and 7 with relief of mosquitos at the site due to winds and cooler summers (Holt et al. 2009). Overall, it seems that the hypothesis posed earlier: as temperature increases mosquito-borne pathogen status also increases is something to encourage further study and pursue research in. Throughout this century public health researchers have understood that climate circumscribes the distribution of mosquito-borne diseases, while weather affects the timing and intensity of outbreaks (Epstein et al. 1998). Serious precautions have been placed in affect due to concern about the potential increased risks of mosquito-borne diseases as a result of geography, environment, and temperature. Federal recovery funds were appropriated for development of mosquito and arbovirus surveillance programs in Georgia (Whitehead 2009).
+
+Sources Cited
+=============
+
+Bentley, M. D., and J. F. Day. 1989. Chemical ecology and behavioral aspects of mosquito oviposition. Annual review of entomology 34:401–421.
+
+Buckner, E. A., M. S. Blackmore, S. W. Golladay, and A. P. Covich. 2011. Weather and landscape factors associated with adult mosquito abundance in southwestern georgia, usa. Journal of Vector Ecology 36:269–278.
+
+Eisen, L., B. G. Bolling, C. D. Blair, B. J. Beaty, and C. G. Moore. 2008. Mosquito species richness, composition, and abundance along habitat-climate-elevation gradients in the northern colorado front range. Journal of medical entomology 45:800–811.
+
+Epstein, P. R., H. F. Diaz, S. Elias, G. Grabherr, N. E. Graham, W. J. Martens, E. Mosley-Thompson, and J. Susskind. 1998. Biological and physical signs of climate change: Focus on mosquito-borne diseases. Bulletin of the American Meteorological Society 79:409–417.
+
+Gill, C. A., and others. 1921. The rôle oï meteorology in malaria. Indian Journal of Medical Research 8.
+
+Hampton, S. E., C. A. Strasser, J. J. Tewksbury, W. K. Gram, A. E. Budden, A. L. Batcheller, C. S. Duke, and J. H. Porter. 2013. Big data and the future of ecology. Frontiers in Ecology and the Environment 11:156–162.
+
+Harvell, C. D., C. E. Mitchell, J. R. Ward, S. Altizer, A. P. Dobson, R. S. Ostfeld, and M. D. Samuel. 2002. Climate warming and disease risks for terrestrial and marine biota. Science 296:2158–2162.
+
+Hoekman, D., Y. P. Springer, C. Barker, R. Barrera, M. Blackmore, W. Bradshaw, D. H. Foley, H. Ginsberg, M. Hayden, C. Holzapfel, and others. 2016. Design for mosquito abundance, diversity, and phenology sampling within the national ecological observatory network. Ecosphere 7.
+
+Holt, D. W., M. T. Maples, J. L. Petersen-Parret, M. Korti, M. Seidensticker, and K. Gray. 2009. Characteristics of nest mounds used by snowy owls in barrow, alaska, with conservation and management implications. Ardea 97:555–561.
+
+Juliano, S. A., and L. Philip Lounibos. 2005. Ecology of invasive mosquitoes: Effects on resident species and on human health. Ecology letters 8:558–574.
+
+Kampe, T. U., B. R. Johnson, M. A. Kuester, and M. Keller. 2010. NEON: The first continental-scale ecological observatory with airborne remote sensing of vegetation canopy biochemistry and structure. Journal of Applied Remote Sensing 4:043510.
+
+Lothrop, H. D., and W. K. Reisen. 2001. Landscape affects the host-seeking patterns of culex tarsalis (diptera: Culicidae) in the coachella valley of california. Journal of Medical Entomology 38:325–332.
+
+McNELLY, J. R. 1989. The cdc trap as a special monitoring tool. Page 33 *in* Proceedings 76th meeting. nj mosquito control association, inc.
+
+Miles, C., and R. Pfeuffer. 1997. Pesticides in canals of south florida. Archives of Environmental Contamination and Toxicology 32:337–345.
+
+Nellemann, C., and R. D. Cameron. 1996. Effects of petroleum development on terrain preferences of calving caribou. Arctic:23–28.
+
+Norris, D. E. 2004. Mosquito-borne diseases as a consequence of land use change. EcoHealth 1:19–24.
+
+Thorpe, A. S., D. T. Barnett, S. C. Elmendorf, E.-L. S. Hinckley, D. Hoekman, K. D. Jones, K. E. LeVan, C. L. Meier, L. F. Stanish, and K. M. Thibault. 2016. Introduction to the sampling designs of the national ecological observatory network terrestrial observation system. Ecosphere 7.
+
+Whitehead, E. A. 2009. Adult mosquito ecology in southwestern georgia. PhD thesis, uga.
+
+WYOMING, M. A. O. S. 1996. Elevational distribution of mosquitoes in a mountainous area of southeastern wyoming. Journal of the American Mosquito Control Association 12:8–16.
+
+Young, G. B., S. Golladay, A. Covich, and M. Blackmore. 2014. Stable isotope analysis of larval mosquito diets in agricultural wetlands in the coastal plain of georgia, usa. Journal of Vector Ecology 39:288–297.

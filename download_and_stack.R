@@ -14,17 +14,33 @@ library("neonDataStackR")
 
 # Example download and stack code:
 # Change the data product ID (dpID) to the data set you want to download.
-# This is for herbaceous clip harvest data, from all sites and months for
+# This is for herbaceous clip harvest data, from all sites and months for #####change harvest data
 # which it is currently available.
-zipsByProduct(dpID = "DP1.10023.001",
-              site = "all",
-              package = "expanded",
-              check.size = TRUE)
+# zipsByProduct(dpID = "DP1.10043.001",
+#               site = "all",
+#               package = "expanded",
+#               check.size = TRUE)
 
 # combine all of the seperate data files into larger combined files
 # Change the data product ID to the ID for the dataset you want to download
 # and the filepath to the name of the folder that was downloaded in the
 # previous step
-stackByTable(dpID = "DP1.10023.001",
-             filepath = "filesToStack10023",
-             folder = TRUE)
+stackByTable(dpID = "DP1.10043.001",
+             filepath = "NEON_count-mosquitoes.zip",
+             folder = FALSE)
+
+# combine all of the seperate data files into larger combined files
+# Change the data product ID to the ID for the dataset you want to download
+# and the filepath to the name of the folder that was downloaded in the
+# previous step
+stackByTable(dpID = "DP1.10041.001",
+             filepath = "NEON_pathogens-mosquito.zip",
+             folder = FALSE)
+
+# combine all of the seperate data files into larger combined files
+# Change the data product ID to the ID for the dataset you want to download
+# and the filepath to the name of the folder that was downloaded in the
+# previous step
+stackByTable(dpID = "DP1.00005.001",
+             filepath = "neon_aggregated_temperature_data.zip",
+             folder = FALSE)
